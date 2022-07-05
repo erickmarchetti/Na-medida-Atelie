@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react"
 import {
     BackgroundImage,
+    ContainerText,
     HomeBG,
     HomeContainer,
     HomeHeader,
@@ -14,32 +15,33 @@ function Home() {
         <HomeBG>
             <HomeHeader>
                 <Button
-                    border="2px"
-                    borderColor="#6B6B6B"
-                    color="#6B6B6B"
+                    variant="outline"
+                    borderColor="#181818"
+                    color="#181818"
                     w="135px"
+                    h="40px"
                     boxShadow="dark-lg"
-                    fontWeight="bold"
+                    fontWeight="700"
+                    fontSize="22px"
                     _hover={{
-                        bgColor: "#DA4167",
-                        color: "#FAFAFA",
-                        borderColor: "#FAFAFA"
+                        textDecoration: "underline"
                     }}
                 >
                     Login
                 </Button>
                 <Button
-                    border="2px"
-                    borderColor="#FAFAFA"
+                    variant="outline"
+                    borderColor="#DA4167"
                     bgColor="#DA4167"
                     color="#FAFAFA"
                     w="135px"
+                    h="40px"
                     boxShadow="dark-lg"
-                    fontWeight="bold"
+                    fontWeight="700"
+                    fontSize="22px"
                     _hover={{
-                        bgColor: "#FAFAFA",
-                        color: "#DA4167",
-                        borderColor: "#DA4167"
+                        bgColor: "#A6324F",
+                        borderColor: "#A6324F"
                     }}
                 >
                     Cadastro
@@ -50,10 +52,29 @@ function Home() {
                     <ImgContainer>
                         <img src={logo} alt="Logo" />
                     </ImgContainer>
-                    <h1>O seu site de roupas sob medidas</h1>
-                    <h2>De forma simples e prática.</h2>
+                    <ContainerText>
+                        <h1>O seu site de roupas sob medidas</h1>
+                        <h2>De forma simples e prática.</h2>
+                    </ContainerText>
+                    <Button
+                        border="2px"
+                        borderColor="#DA4167"
+                        fontSize="20px"
+                        fontWeight="700"
+                        bgColor="#DA4167"
+                        color="#FAFAFA"
+                        w="350px"
+                        h="60px"
+                        boxShadow="dark-lg"
+                        _hover={{
+                            bgColor: "#A6324F",
+                            borderColor: "#A6324F"
+                        }}
+                    >
+                        Veja o que nossos clientes dizem
+                    </Button>
                 </HomeContainer>
-                <BackgroundImage />
+                <BackgroundImage></BackgroundImage>
             </HomeMain>
         </HomeBG>
     )
