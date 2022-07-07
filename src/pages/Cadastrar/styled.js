@@ -32,7 +32,7 @@ export const Formulario = styled.div`
     .formControl {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 30px;
         margin: 10px;
@@ -62,13 +62,12 @@ export const Formulario = styled.div`
     input {
         border: 2px solid #000000;
     }
-    button {
+    .botaoLog {
         font-family: "Nunito";
         font-style: normal;
         font-weight: 700;
         font-size: 25px;
         line-height: 34px;
-
         color: #ffffff;
     }
     h1 {
