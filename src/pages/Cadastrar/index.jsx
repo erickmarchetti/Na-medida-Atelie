@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
-import Header from "../../components/HeaderCadastro"
-import { Formulario, Principal } from "./styled"
+import logo from "../../Images/logo.svg"
+import { Formulario, Principal, HeaderPaginaCadastro } from "./style"
 
 export default function Cadastro() {
     // const history = useHistory()
@@ -58,7 +58,10 @@ export default function Cadastro() {
     function registro(data) {}
     return (
         <>
-            <Header />
+            <HeaderPaginaCadastro>
+                <img src={logo} alt="Na Medida Ateliê" />
+            </HeaderPaginaCadastro>
+
             <Principal>
                 <div className="divImg">
                     <img src={custommadewoman} alt="custommadewoman" />
