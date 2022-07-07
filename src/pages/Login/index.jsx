@@ -14,8 +14,12 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import custom from "../../Images/custom.png"
-import { DivContainerLogin } from "./styledLogin"
-import HeaderLogin from "./headerLogin"
+import { DivContainerLogin, DivHeaderLogin } from "./style"
+import logo from "../../Images/logo.svg"
+
+import { useContext } from "react"
+import { UserContext } from "../../providers/user"
+
 export default function Login() {
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
@@ -40,9 +44,13 @@ export default function Login() {
     } = useForm({ resolver: yupResolver(validacoesYup) })
 
     function registro() {}
+
     return (
         <>
-            <HeaderLogin />
+            <DivHeaderLogin>
+                <img src={logo} alt="Na Medida Ateliê" />
+            </DivHeaderLogin>
+
             <DivContainerLogin>
                 <div className="imgHomem">
                     <img src={custom} alt="custom" />
@@ -117,4 +125,3 @@ export default function Login() {
         </>
     )
 }
-
