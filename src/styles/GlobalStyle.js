@@ -21,11 +21,18 @@ const GlobalStyle = createGlobalStyle`
         --Color-Secondary-Main: #E65F39;
         --Color-Secondary-Dark: #FC4132;
 
+        --Black: #000000;
+        --White: #FFFFFF;
+        --Red: #e53e3e;
+
         --Contrast-Text: #F23062;
 
         --BackgroundColor-Main: #FAFAFA;
         --BackgroundColor-Black: #181818;
         --Paper: #465362;
+
+        --Title-Header: #D70402;
+
 
         --Grey-0: #F7F7F7;
         --Grey-1: #EAEAEA;

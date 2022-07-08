@@ -13,9 +13,9 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
-import custom from "../../Images/custom.png"
+import custom from "../../assets/Images/custom.png"
+import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, DivHeaderLogin } from "./style"
-import logo from "../../Images/logo.svg"
 
 import { useContext } from "react"
 import { UserContext } from "../../providers/user"
@@ -74,9 +74,9 @@ export default function Login() {
                                 {...register("email")}
                             />
                             <div>
-                                {errors.name && (
+                                {errors.email && (
                                     <FormHelperText>
-                                        {errors.name.message}
+                                        {errors.email.message}
                                     </FormHelperText>
                                 )}
                             </div>
@@ -104,9 +104,9 @@ export default function Login() {
                                 />
                             </InputGroup>
                             <div>
-                                {errors.name && (
+                                {errors.password && (
                                     <FormHelperText>
-                                        {errors.name.message}
+                                        {errors.password.message}
                                     </FormHelperText>
                                 )}
                             </div>

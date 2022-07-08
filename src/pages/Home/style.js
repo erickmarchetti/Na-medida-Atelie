@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import homeBackground from "./img/layer.png"
+import homeBackground from "../../assets/Images/layer.png"
 
 export const HomeBG = styled.div`
     background-color: #fafafa;
