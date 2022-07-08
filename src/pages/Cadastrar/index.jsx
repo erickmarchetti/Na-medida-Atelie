@@ -44,7 +44,7 @@ export default function Cadastro() {
                 "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$",
                 "Formato de senha incorreto! São necessarios 8 caracteres, ter letras maiúsculas e minúsculas, números e ao menos um símbolo"
             ),
-        passwordconfirm: yup
+        passwordConfirm: yup
             .string()
             .required("Confirmação de senha é obrigatório!")
             .oneOf([yup.ref("password")], "Senhas diferentes")
@@ -99,8 +99,6 @@ export default function Cadastro() {
                             height: "100vh",
                             position: "sticky",
                             top: 0
-                            // width: "100%",
-                            // objectFit: "cover"
                         }}
                     />
                 </Box>
@@ -133,7 +131,7 @@ export default function Cadastro() {
                         }}
                     >
                         <Heading textAlign="center">Cadastro</Heading>
-                        <FormControl isInvalid>
+                        <FormControl>
                             <FormLabel htmlFor="name" sx={formErrorLabelStyle}>
                                 Nome
                             </FormLabel>
@@ -141,6 +139,7 @@ export default function Cadastro() {
                                 id="name"
                                 placeholder="Nome completo"
                                 borderColor="var(--Grey-4)"
+                                isInvalid={errors.name}
                                 errorBorderColor="red.500"
                                 {...register("name")}
                             />
@@ -160,6 +159,7 @@ export default function Cadastro() {
                                 id="email"
                                 placeholder="email@email.com"
                                 borderColor="var(--Grey-4)"
+                                isInvalid={errors.email}
                                 errorBorderColor="red.500"
                                 {...register("email")}
                             />
@@ -202,6 +202,7 @@ export default function Cadastro() {
                                     type={show ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
+                                    isInvalid={errors.password}
                                     errorBorderColor="red.500"
                                     {...register("password")}
                                 />
@@ -217,7 +218,7 @@ export default function Cadastro() {
                         <FormControl>
                             <FormLabel
                                 sx={formErrorLabelStyle}
-                                htmlFor="passwordconfirm"
+                                htmlFor="passwordConfirm"
                             >
                                 Confirmar senha
                             </FormLabel>
@@ -241,18 +242,19 @@ export default function Cadastro() {
                                     />
                                 </InputRightElement>
                                 <Input
-                                    id="passwordconfirm"
+                                    id="passwordConfirm"
                                     type={showb ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
+                                    isInvalid={errors.passwordConfirm}
                                     errorBorderColor="red.500"
-                                    {...register("passwordconfirm")}
+                                    {...register("passwordConfirm")}
                                 />
                             </InputGroup>
 
-                            {errors.passwordconfirm && (
+                            {errors.passwordConfirm && (
                                 <FormHelperText sx={formErrorStyle}>
-                                    {errors?.passwordconfirm.message}
+                                    {errors?.passwordConfirm.message}
                                 </FormHelperText>
                             )}
                         </FormControl>
