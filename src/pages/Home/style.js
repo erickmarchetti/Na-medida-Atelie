@@ -6,39 +6,63 @@ export const HomeBG = styled.div`
     position: absolute;
     z-index: -2;
     width: 100vw;
+    font-family: "Nunito", sans-serif;
 `
 
-export const HomeHeader = styled.header`
-    background-color: rgba(0, 0, 0, 0);
-    height: 10vh;
+export const ButtonContainer = styled.header`
     display: flex;
     align-items: center;
-    gap: 80px;
-    font-family: "Nunito", sans-serif;
-    width: 100vw;
-    padding-left: 100px;
-`
-export const HomeMain = styled.main`
-    height: 90vh;
-    display: flex;
     justify-content: space-between;
-    font-family: "Nunito", sans-serif;
+    gap: unset;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        justify-content: unset;
+        height: 10vh;
+        background-color: rgba(0, 0, 0, 0);
+        gap: 40px;
+        padding-left: 100px;
+        width: 100vw;
+    }
+`
+
+export const HomeMain = styled.main`
+    padding: 25px;
+    display: flex;
+
+    @media (min-width: 768px) {
+        height: 90vh;
+        padding: 0;
+        padding-left: 100px;
+        justify-content: space-between;
+    }
 `
 
 export const HomeContainer = styled.div`
-    margin-left: 100px;
-    height: 85%;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 40vw;
+    align-items: center;
+    flex: 1;
+    gap: 20px;
+
+    @media (min-width: 768px) {
+        align-items: unset;
+        min-width: 365px;
+        height: 90vh;
+        width: 40vw;
+    }
 `
 export const ContainerText = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+    height: 100%;
+
     h1 {
-        font-size: 70px;
-        min-width: 638px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 2.2em;
         font-weight: 700;
         color: #da4167;
         font-family: "Roboto", sans-serif;
@@ -46,20 +70,42 @@ export const ContainerText = styled.div`
     }
     h2 {
         font-weight: 700;
-        font-size: 50px;
+        font-size: 2rem;
         color: #6b6b6b;
         font-family: "Dancing Script", cursive;
         text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-        max-width: fit-content;
+    }
+
+    @media (min-width: 768px) {
+        text-align: left;
+        padding: 80px 0;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
     }
 `
+export const ContainerText1280 = styled.div``
 
 export const ImgContainer = styled.div`
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
 
     img {
-        height: 80%;
+    }
+
+    @media (min-width: 768px) {
+        justify-content: unset;
+
+        img {
+            height: 250px;
+        }
     }
 `
 
@@ -69,7 +115,12 @@ export const BackgroundImage = styled.div`
     position: relative;
     right: 0;
     top: -10vh;
-    width: 50vw;
+    width: 40vw;
     height: 100vh;
     z-index: -1;
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
 `
