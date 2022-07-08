@@ -74,9 +74,9 @@ export default function Login() {
                                 {...register("email")}
                             />
                             <div>
-                                {errors.name && (
+                                {errors.email && (
                                     <FormHelperText>
-                                        {errors.name.message}
+                                        {errors.email.message}
                                     </FormHelperText>
                                 )}
                             </div>
@@ -104,9 +104,9 @@ export default function Login() {
                                 />
                             </InputGroup>
                             <div>
-                                {errors.name && (
+                                {errors.password && (
                                     <FormHelperText>
-                                        {errors.name.message}
+                                        {errors.password.message}
                                     </FormHelperText>
                                 )}
                             </div>
