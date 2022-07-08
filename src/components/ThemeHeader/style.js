@@ -22,7 +22,7 @@ export const StyledHeader = styled.header`
 
     transition: 0.3s;
 
-    @media (max-width: 479px) {
+    @media (max-width: 450px) {
         height: 70px;
 
         span {

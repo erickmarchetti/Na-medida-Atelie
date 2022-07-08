@@ -1,11 +1,10 @@
 import { Flex, Image } from "@chakra-ui/react"
-import logo from "../../image/logo.svg"
-import agumon from "../../image/agumon.svg"
+import logo from "../../Images/logo.svg"
 
 import { StyledHeader } from "./style.js"
 
 function ThemeHeader() {
-    const nomeCompleto = "Icaro Luiz da silva lima"
+    const nomeCompleto = "Icaro algo da algo"
     const primeiroNome = nomeCompleto.split(" ")[0]
     const restoNome = nomeCompleto.split(" ").slice(1).join(" ")
 
@@ -35,9 +34,12 @@ function ThemeHeader() {
                         gap="9px"
                     >
                         <span>{primeiroNome}</span>
-                        <span className="restoNome">{restoNome}</span>
+                        {!!restoNome && (
+                            <span className="restoNome">{restoNome}</span>
+                        )}
+
                         <Image
-                            src={agumon}
+                            src="https://images5.alphacoders.com/836/836289.jpg"
                             w={{ base: "30px", sm: "50px" }}
                             h={{ base: "30px", sm: "50px" }}
                             objectFit="cover"
