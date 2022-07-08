@@ -6,7 +6,7 @@ import PainelAdmin from "../pages/PainelAdmin"
 import PainelUsuario from "../pages/PainelUsuario"
 import Pedidos from "../pages/Pedidos"
 
-const Routes = () => {
+function Routes() {
     const history = useHistory()
 
     return (
