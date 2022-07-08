@@ -8,8 +8,8 @@ import {
     HomeMain,
     ImgContainer
 } from "./style"
-import logo from "./img/logo.svg"
-import logoMobile from "./img/logo_mobile.svg"
+
+import logo from "../../assets/Images/logo_mobile.svg"
 
 function Home() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
@@ -70,7 +70,7 @@ function Home() {
                 <HomeContainer>
                     <ContainerText>
                         <ImgContainer>
-                            <img src={logoMobile} alt="Logo" />
+                            <img src={logo} alt="Logo" />
                         </ImgContainer>
                         <h1>O seu site de roupas sob medidas</h1>
                         <h2>De forma simples e prática.</h2>
