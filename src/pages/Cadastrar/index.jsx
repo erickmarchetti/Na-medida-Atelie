@@ -29,9 +29,8 @@ import logo from "../../Images/logo.svg"
 import { ImgLogo } from "./style"
 
 export default function Cadastro() {
-
     const history = useHistory()
-    
+
     const validacoesYup = yup.object().shape({
         name: yup.string().required("Preencher campo nome é obrigatório!"),
         email: yup
@@ -62,7 +61,6 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
-
     const formErrorStyle = {
         color: "var(--Red)",
         fontWeight: "bold",
@@ -73,21 +71,18 @@ export default function Cadastro() {
     const formErrorLabelStyle = {
         margin: "2px 16px"
     }
-    
+
     function registro(data) {
         Api.post("/register", data)
-            .then((response) => {
-                
+            .then(() => {
                 toast.success("Cadastro realizado com sucesso!")
                 return history.push("/login")
             })
-            .catch((error) => {
-                
+            .catch(() => {
                 toast.error("Ops, erro ao criar a conta. Tente novamente.")
             })
-
     }
-    
+
     return (
         <>
             <Stack direction="row" width="100%">
@@ -95,19 +90,18 @@ export default function Cadastro() {
                     <img
                         src={custommadewoman}
                         alt="custommadewoman"
-                        style={{ height: "100vh" }}
+                        style={{ height: "100vh", position: "sticky", top: 0 }}
                     />
                 </Box>
 
                 <Flex
-                    flexDirection="column"
+                    flexDirection="row-reverse"
                     alignitens={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
                     marginRight="4rem"
                     max-height="100vh"
                     gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
-                    paddingBottom={{ base: "10px", lg: "0" }}
                 >
                     <ImgLogo src={logo} alt="Na Medida Ateliê" />
                     <Stack
@@ -147,7 +141,7 @@ export default function Cadastro() {
                         </FormControl>
 
                         <FormControl>
-                            <FormLabel sx={formErrorLabelStyle} htmlFor="name">
+                            <FormLabel sx={formErrorLabelStyle} htmlFor="email">
                                 Email
                             </FormLabel>
                             <Input
@@ -166,7 +160,10 @@ export default function Cadastro() {
                         </FormControl>
 
                         <FormControl>
-                            <FormLabel sx={formErrorLabelStyle} htmlFor="senha">
+                            <FormLabel
+                                sx={formErrorLabelStyle}
+                                htmlFor="password"
+                            >
                                 Senha
                             </FormLabel>
                             <InputGroup>
@@ -192,6 +189,7 @@ export default function Cadastro() {
                                     id="password"
                                     type={show ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
+                                    borderColor="var(--Grey-4)"
                                     errorBorderColor="#e53e3e"
                                     {...register("password")}
                                 />
@@ -205,7 +203,10 @@ export default function Cadastro() {
                         </FormControl>
 
                         <FormControl>
-                            <FormLabel sx={formErrorLabelStyle} htmlFor="senha">
+                            <FormLabel
+                                sx={formErrorLabelStyle}
+                                htmlFor="passwordconfirm"
+                            >
                                 Confirmar senha
                             </FormLabel>
                             <InputGroup>
@@ -231,7 +232,7 @@ export default function Cadastro() {
                                     id="passwordconfirm"
                                     type={showb ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
-                                    border="1px solid var(--Grey-4)"
+                                    borderColor="var(--Grey-4)"
                                     errorBorderColor="#e53e3e"
                                     {...register("passwordconfirm")}
                                 />
@@ -254,7 +255,7 @@ export default function Cadastro() {
                             <Input
                                 id="avatar"
                                 placeholder="Url da imagem"
-                                border="1px solid var(--Grey-4)"
+                                borderColor="var(--Grey-4)"
                                 errorBorderColor="#e53e3e"
                                 {...register("avatar")}
                             />
@@ -291,7 +292,7 @@ export default function Cadastro() {
                         >
                             Cadastrar
                         </Button>
-                        <Text textAlign="center" fontSize="12px">
+                        <Text paddingY={2} textAlign="center" fontSize="12px">
                             Já possui conta? Faça o
                             <Link
                                 to="/login"
