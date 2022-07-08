@@ -1,4 +1,4 @@
-import custommadewoman from "../../Images/custommadewoman.png"
+import custommadewoman from "../../assets/Images/custommadewoman.png"
 
 import { Link, useHistory } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -25,13 +25,12 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
-import logo from "../../Images/logo.svg"
+import logo from "../../assets/Images/logo.svg"
 import { ImgLogo } from "./style"
 
 export default function Cadastro() {
-
     const history = useHistory()
-    
+
     const validacoesYup = yup.object().shape({
         name: yup.string().required("Preencher campo nome é obrigatório!"),
         email: yup
@@ -62,7 +61,6 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
-
     const formErrorStyle = {
         color: "var(--Red)",
         fontWeight: "bold",
@@ -73,21 +71,18 @@ export default function Cadastro() {
     const formErrorLabelStyle = {
         margin: "2px 16px"
     }
-    
+
     function registro(data) {
         Api.post("/register", data)
             .then((response) => {
-                
                 toast.success("Cadastro realizado com sucesso!")
                 return history.push("/login")
             })
             .catch((error) => {
-                
                 toast.error("Ops, erro ao criar a conta. Tente novamente.")
             })
-
     }
-    
+
     return (
         <>
             <Stack direction="row" width="100%">
