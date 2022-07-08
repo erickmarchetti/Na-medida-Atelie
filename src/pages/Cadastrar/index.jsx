@@ -1,4 +1,4 @@
-import custommadewoman from "../../Images/custommadewoman.png"
+import custommadewoman from "../../assets/Images/custommadewoman.png"
 
 import { Link, useHistory } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -25,7 +25,7 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
-import logo from "../../Images/logo.svg"
+import logo from "../../assets/Images/logo.svg"
 import { ImgLogo } from "./style"
 
 export default function Cadastro() {
@@ -74,6 +74,7 @@ export default function Cadastro() {
 
     function registro(data) {
         Api.post("/register", data)
+
             .then(() => {
                 toast.success("Cadastro realizado com sucesso!")
                 return history.push("/login")
