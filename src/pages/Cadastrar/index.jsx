@@ -86,18 +86,28 @@ export default function Cadastro() {
 
     return (
         <>
-            <Stack direction="row" width="100%">
+            <Stack
+                direction="row"
+                width="100%"
+                border={{ lg: "solid 1px var(--Black)" }}
+            >
                 <Box display={{ base: "none", lg: "block" }}>
                     <img
                         src={custommadewoman}
                         alt="custommadewoman"
-                        style={{ height: "100vh", position: "sticky", top: 0 }}
+                        style={{
+                            height: "100vh",
+                            position: "sticky",
+                            top: 0
+                            // width: "100%",
+                            // objectFit: "cover"
+                        }}
                     />
                 </Box>
 
                 <Flex
-                    flexDirection="row-reverse"
-                    alignitens={{ base: "center", lg: "flex-end" }}
+                    flexDirection={{ base: "column", lg: "row-reverse" }}
+                    alignItems={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
                     marginRight="4rem"
                     max-height="100vh"
@@ -108,6 +118,7 @@ export default function Cadastro() {
                     <Stack
                         as="form"
                         w={{ base: "90%", md: "50%", lg: "400px" }}
+                        transition="0.3s"
                         maxH={"100vh"}
                         onSubmit={handleSubmit(registro)}
                         sx={{
@@ -130,7 +141,7 @@ export default function Cadastro() {
                                 id="name"
                                 placeholder="Nome completo"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="var(--Red)"
+                                errorBorderColor="red.500"
                                 {...register("name")}
                             />
 
@@ -149,7 +160,7 @@ export default function Cadastro() {
                                 id="email"
                                 placeholder="email@email.com"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="#e53e3e"
+                                errorBorderColor="red.500"
                                 {...register("email")}
                             />
 
@@ -191,7 +202,7 @@ export default function Cadastro() {
                                     type={show ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
-                                    errorBorderColor="#e53e3e"
+                                    errorBorderColor="red.500"
                                     {...register("password")}
                                 />
                             </InputGroup>
@@ -234,7 +245,7 @@ export default function Cadastro() {
                                     type={showb ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
-                                    errorBorderColor="#e53e3e"
+                                    errorBorderColor="red.500"
                                     {...register("passwordconfirm")}
                                 />
                             </InputGroup>
@@ -257,7 +268,7 @@ export default function Cadastro() {
                                 id="avatar"
                                 placeholder="Url da imagem"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="#e53e3e"
+                                errorBorderColor="red.500"
                                 {...register("avatar")}
                             />
                         </FormControl>
