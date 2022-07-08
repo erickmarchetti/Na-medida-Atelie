@@ -1,6 +1,7 @@
 import custommadewoman from "../../Images/custommadewoman.png"
-// import { useHistory } from "react-router-dom"
-
+import { useHistory } from "react-router-dom"
+import { toast } from "react-toastify"
+import Api from "../../Api"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -21,7 +22,7 @@ import logo from "../../Images/logo.svg"
 import { Formulario, Principal, HeaderPaginaCadastro } from "./style"
 
 export default function Cadastro() {
-    // const history = useHistory()
+    const history = useHistory()
     const validacoesYup = yup.object().shape({
         name: yup.string().required("Preencher campo nome é obrigatório!"),
         email: yup
@@ -55,7 +56,18 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
-    function registro(data) {}
+    function registro(data) {
+        Api.post("/register", data)
+            .then((response) => {
+                console.log(response)
+                toast.success("Cadastro realizado com sucesso!")
+                return history.push("/login")
+            })
+            .catch((error) => {
+                console.log(error)
+                toast.error("Ops, erro ao criar a conta. Tente novamente.")
+            })
+    }
     return (
         <>
             <HeaderPaginaCadastro>
