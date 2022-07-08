@@ -31,6 +31,9 @@ const GlobalStyle = createGlobalStyle`
         --BackgroundColor-Black: #181818;
         --Paper: #465362;
 
+        --Title-Header: #D70402;
+
+
         --Grey-0: #F7F7F7;
         --Grey-1: #EAEAEA;
         --Grey-2: #D1D1D1;
