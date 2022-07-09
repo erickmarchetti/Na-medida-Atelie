@@ -8,21 +8,24 @@ import {
     InputGroup,
     InputRightElement
 } from "@chakra-ui/react"
+import Api from "../../Api"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, DivHeaderLogin } from "./style"
-
-import { useContext } from "react"
 import { UserContext } from "../../providers/user"
+import { toast } from "react-toastify"
+import { useHistory } from "react-router-dom"
 
 export default function Login() {
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
+    const [isLoading, setIsLoading] = useState(false)
+    const history = useHistory()
 
     const validacoesYup = yup.object().shape({
         email: yup
@@ -34,7 +37,7 @@ export default function Login() {
             .required("Preencher campo senha é obrigatório!")
             .matches(
                 "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$",
-                "Formato de senha incorreto ! São necessarios 8 caracteres, ter letras maiúsculas e minúsculas, números e ao menos um símbolo"
+                "Formato de senha incorreto! São necessarios 8 caracteres, ter letras maiúsculas e minúsculas, números e ao menos um símbolo"
             )
     })
     const {
@@ -43,83 +46,137 @@ export default function Login() {
         formState: { errors }
     } = useForm({ resolver: yupResolver(validacoesYup) })
 
-    function registro() {}
+    const formErrorStyle = {
+        color: "var(--Red)",
+        fontWeight: "bold",
+        fontSize: "14px",
+        margin: "2px 16px",
+        width: "90%"
+    }
 
+    const formErrorLabelStyle = {
+        margin: "2px 16px"
+    }
+
+    const { setUser } = useContext(UserContext)
+
+    const registro = (data) => {
+        Api.post("/login", data)
+            .then((res) => {
+                setIsLoading(true)
+                setUser(res.data)
+                history.push("/painel")
+            })
+            .catch(() => {
+                setIsLoading(true)
+                toast.error("Credencias inválidas")
+                setTimeout(() => setIsLoading(false), 500)
+            })
+            .finally(setIsLoading(false))
+    }
     return (
         <>
-            <DivHeaderLogin>
-                <img src={logo} alt="Na Medida Ateliê" />
-            </DivHeaderLogin>
-
             <DivContainerLogin>
                 <div className="imgHomem">
                     <img src={custom} alt="custom" />
                 </div>
 
-                <div className="divFormulario">
-                    <div>
-                        <h1>É um prazer ver você novamente</h1>
-                    </div>
-                    <form onSubmit={handleSubmit(registro)}>
-                        <FormControl className="form">
-                            <div className="loginForm">
-                                <h2>LOGIN</h2>
-                            </div>
+                <div className="divResponsiva">
+                    <DivHeaderLogin>
+                        <img src={logo} alt="Na Medida Ateliê" />
+                    </DivHeaderLogin>
+                    <div className="divFormulario">
+                        <div>
+                            <h1>É um prazer ver você novamente!</h1>
+                        </div>
+                        <form onSubmit={handleSubmit(registro)}>
+                            <FormControl className="form">
+                                <div className="loginForm">
+                                    <h2>Login</h2>
+                                </div>
 
-                            <FormLabel htmlFor="email">Email</FormLabel>
-                            <Input
-                                id="email"
-                                type="email"
-                                placeholder="Insira seu Email"
-                                {...register("email")}
-                            />
-                            <div>
+                                <FormLabel
+                                    sx={formErrorLabelStyle}
+                                    htmlFor="email"
+                                >
+                                    Email
+                                </FormLabel>
+                                <Input
+                                    id="email"
+                                    sx={{
+                                        borderColor: "2px solid var(--Grey-4)"
+                                    }}
+                                    type="email"
+                                    placeholder="Insira seu Email"
+                                    isInvalid={errors.email}
+                                    errorBorderColor="red.500"
+                                    {...register("email")}
+                                />
                                 {errors.email && (
-                                    <FormHelperText>
+                                    <FormHelperText
+                                        sx={formErrorStyle}
+                                        color="#e53e3e"
+                                    >
                                         {errors.email.message}
                                     </FormHelperText>
                                 )}
-                            </div>
-
-                            <FormLabel htmlFor="senha">Senha</FormLabel>
-                            <InputGroup>
-                                <InputRightElement>
-                                    <IconButton
-                                        bg="transparent"
-                                        onClick={handleClick}
-                                        icon={
-                                            show ? (
-                                                <ViewOffIcon />
-                                            ) : (
-                                                <ViewIcon />
-                                            )
-                                        }
+                                <FormLabel
+                                    sx={formErrorLabelStyle}
+                                    htmlFor="password"
+                                >
+                                    Senha
+                                </FormLabel>
+                                <InputGroup>
+                                    <InputRightElement>
+                                        <IconButton
+                                            bg="transparent"
+                                            onClick={handleClick}
+                                            _active={false}
+                                            _hover={false}
+                                            icon={
+                                                show ? (
+                                                    <ViewIcon />
+                                                ) : (
+                                                    <ViewOffIcon />
+                                                )
+                                            }
+                                        />
+                                    </InputRightElement>
+                                    <Input
+                                        id="password"
+                                        sx={{
+                                            borderColor:
+                                                "2px solid var(--Grey-4)"
+                                        }}
+                                        type={show ? "text" : "password"}
+                                        errorBorderColor="red.500"
+                                        isInvalid={errors.password}
+                                        placeholder="•••••••••••••••••••••"
+                                        {...register("password")}
                                     />
-                                </InputRightElement>
-                                <Input
-                                    id="password"
-                                    type={show ? "text" : "password"}
-                                    placeholder="**********"
-                                    {...register("password")}
-                                />
-                            </InputGroup>
-                            <div>
+                                </InputGroup>
                                 {errors.password && (
-                                    <FormHelperText>
+                                    <FormHelperText
+                                        sx={formErrorStyle}
+                                        color="#e53e3e"
+                                    >
                                         {errors.password.message}
                                     </FormHelperText>
                                 )}
-                            </div>
-
-                            <Button className="butonLogin" type="submit">
-                                Login
-                            </Button>
-                            <p>
-                                Não possui uma conta?
-                                <a href="/cadastro">Cadastre-se</a>
-                            </p>
-                        </FormControl>
-                    </form>
+                                <Button
+                                    isLoading={isLoading}
+                                    className="butonLogin"
+                                    type="submit"
+                                >
+                                    Login
+                                </Button>
+                                <p>
+                                    Não possui uma conta?
+                                    <a href="/register"> Cadastre-se</a>
+                                </p>
+                            </FormControl>
+                        </form>
+                    </div>
                 </div>
             </DivContainerLogin>
         </>
