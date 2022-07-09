@@ -61,6 +61,9 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
+    const [checked, setChecked] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+
     const formErrorStyle = {
         color: "var(--Red)",
         fontWeight: "bold",
@@ -76,12 +79,20 @@ export default function Cadastro() {
         Api.post("/register", data)
 
             .then(() => {
-                toast.success("Cadastro realizado com sucesso!")
-                return history.push("/login")
+                setIsLoading(true)
+                if (checked) {
+                    toast.success("Cadastro realizado com sucesso!")
+                    return history.push("/login")
+                } else {
+                    toast.error("Favor aceitar os termos para continuar")
+                }
             })
             .catch(() => {
+                setIsLoading(true)
                 toast.error("Ops, erro ao criar a conta. Tente novamente.")
+                setTimeout(() => setIsLoading(false), 600)
             })
+            .finally(setIsLoading(false))
     }
 
     return (
@@ -90,6 +101,9 @@ export default function Cadastro() {
                 direction="row"
                 width="100%"
                 border={{ lg: "solid 1px var(--Black)" }}
+                bg={
+                    "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
+                }
             >
                 <Box display={{ base: "none", lg: "block" }}>
                     <img
@@ -278,6 +292,8 @@ export default function Cadastro() {
                         {/* Termos de uso e privacidade dados como extra, remova esse comentario apos conclusao */}
                         <Stack spacing={2} direction="row">
                             <Checkbox
+                                isChecked={checked}
+                                onChange={(e) => setChecked(e.target.checked)}
                                 size="sm"
                                 sx={{
                                     fontSize: "12px"
@@ -290,7 +306,8 @@ export default function Cadastro() {
                         </Stack>
 
                         <Button
-                            type="submit" // mt={5}
+                            isLoading={isLoading}
+                            type="submit"
                             _active={false}
                             borderRadius={"10px"}
                             _hover={{
