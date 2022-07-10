@@ -61,19 +61,19 @@ export default function Login() {
     const { setUser } = useContext(UserContext)
 
     const registro = (data) => {
+        setIsLoading(true)
+
         Api.post("/login", data)
             .then((res) => {
-                setIsLoading(true)
                 setUser(res.data)
                 history.push("/painel")
             })
             .catch(() => {
-                setIsLoading(true)
                 toast.error("Credencias inválidas")
-                setTimeout(() => setIsLoading(false), 500)
             })
-            .finally(setIsLoading(false))
+            .finally(() => setIsLoading(false))
     }
+
     return (
         <>
             <DivContainerLogin>
