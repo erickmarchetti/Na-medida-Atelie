@@ -32,14 +32,9 @@ export default function Login() {
             .string()
             .required(" Preencher campo Email é obrigatorio!")
             .email("Email inválido"),
-        password: yup
-            .string()
-            .required("Preencher campo senha é obrigatório!")
-            .matches(
-                "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$",
-                "Formato de senha incorreto! São necessarios 8 caracteres, ter letras maiúsculas e minúsculas, números e ao menos um símbolo"
-            )
+        password: yup.string().required("Preencher campo senha é obrigatório!")
     })
+
     const {
         register,
         handleSubmit,
