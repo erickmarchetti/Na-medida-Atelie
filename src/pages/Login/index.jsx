@@ -53,14 +53,14 @@ export default function Login() {
         margin: "2px 16px"
     }
 
-    const { setUser } = useContext(UserContext)
-
     const registro = (data) => {
         setIsLoading(true)
 
         Api.post("/login", data)
             .then((res) => {
-                setUser(res.data)
+                window.localStorage.setItem("@user/token", res.data.accessToken)
+                window.localStorage.setItem("@user/id", res.data.user.id)
+
                 history.push("/painel")
             })
             .catch(() => {
