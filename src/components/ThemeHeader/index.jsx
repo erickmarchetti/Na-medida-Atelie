@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Image } from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
 
