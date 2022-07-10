@@ -23,7 +23,7 @@ import {
     Flex,
     Box
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import logo from "../../assets/Images/logo.svg"
 import { ImgLogo } from "./style"
@@ -47,7 +47,10 @@ export default function Cadastro() {
         passwordConfirm: yup
             .string()
             .required("Confirmação de senha é obrigatório!")
-            .oneOf([yup.ref("password")], "Senhas diferentes")
+            .oneOf([yup.ref("password")], "Senhas diferentes"),
+        checkbox: yup
+            .boolean()
+            .oneOf([true], "Por favor, aceite os termos de serviço!")
     })
     const {
         register,
@@ -61,7 +64,6 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
-    const [checked, setChecked] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
     const formErrorStyle = {
@@ -76,24 +78,23 @@ export default function Cadastro() {
     }
 
     function registro(data) {
+        setIsLoading(true)
+
         Api.post("/register", data)
 
             .then(() => {
-                setIsLoading(true)
-                if (checked) {
-                    toast.success("Cadastro realizado com sucesso!")
-                    return history.push("/login")
-                } else {
-                    toast.error("Favor aceitar os termos para continuar")
-                }
+                toast.success("Cadastro realizado com sucesso!")
+                history.push("/login")
             })
             .catch(() => {
-                setIsLoading(true)
                 toast.error("Ops, erro ao criar a conta. Tente novamente.")
-                setTimeout(() => setIsLoading(false), 600)
             })
-            .finally(setIsLoading(false))
+            .finally(() => setIsLoading(false))
     }
+
+    useEffect(() => {
+        !!errors?.checkbox && toast.warn(errors.checkbox.message)
+    }, [errors])
 
     return (
         <>
@@ -292,14 +293,12 @@ export default function Cadastro() {
                         {/* Termos de uso e privacidade dados como extra, remova esse comentario apos conclusao */}
                         <Stack spacing={2} direction="row">
                             <Checkbox
-                                isChecked={checked}
-                                onChange={(e) => setChecked(e.target.checked)}
                                 size="sm"
                                 sx={{
                                     fontSize: "12px"
                                 }}
                                 colorScheme="green"
-                                defaultChecked
+                                {...register("checkbox")}
                             >
                                 Li e concordo com os termos de uso e privacidade
                             </Checkbox>
