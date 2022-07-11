@@ -89,6 +89,12 @@ export const DivContainerLogin = styled.div`
             border-radius: 10px;
             font-weight: 600;
             font-size: 25px;
+
+            margin-top: 10px;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
         h2 {
             font-family: "Nunito";
@@ -100,6 +106,7 @@ export const DivContainerLogin = styled.div`
         }
         p {
             font-family: "Nunito";
+            font-size: 14px;
             font-style: normal;
             font-weight: 700;
             line-height: 26px;
@@ -172,9 +179,9 @@ export const DivContainerLogin = styled.div`
     }
 `
 
-export const DivHeaderLogin = styled.header`
-    padding: 1rem 1rem;
+export const ImgLogo = styled.img`
     display: flex;
+
     align-items: flex-start;
     img {
         width: 8rem;
@@ -184,7 +191,13 @@ export const DivHeaderLogin = styled.header`
         }
     }
 
-    @media (max-width: 1200px) {
-        justify-content: center;
+    width: 9rem;
+    justify-self: flex-start;
+    margin: 0.5rem 3rem;
+    align-self: center;
+
+
+    @media (min-width: 1024px) {
+        align-self: flex-start;
     }
 `

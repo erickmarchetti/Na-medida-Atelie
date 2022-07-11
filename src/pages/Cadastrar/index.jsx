@@ -119,7 +119,7 @@ export default function Cadastro() {
                 </Box>
 
                 <Flex
-                    flexDirection={{ base: "column", lg: "row-reverse" }}
+                    flexDirection={{ base: "column", lg: "reverse" }}
                     alignItems={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
                     marginRight="4rem"
@@ -127,12 +127,14 @@ export default function Cadastro() {
                     gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
                 >
+
                     <ImgLogo
                         src={logo}
                         alt="Na Medida Ateliê"
                         title="Página Inicial"
                         onClick={() => history.push("/")}
                     />
+
                     <Stack
                         as="form"
                         w={{ base: "90%", md: "50%", lg: "400px" }}
@@ -327,7 +329,12 @@ export default function Cadastro() {
                         >
                             Cadastrar
                         </Button>
-                        <Text paddingY={2} textAlign="center" fontSize="12px">
+                        <Text
+                            paddingY={2}
+                            textAlign="center"
+                            fontSize="12px"
+                            fontWeight="bold"
+                        >
                             Já possui conta? Faça o
                             <Link
                                 className="botaoLogin"
