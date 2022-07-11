@@ -96,7 +96,7 @@ function PainelAdmin() {
                             overflow="hidden"
                             display="flex"
                             alignItems="center"
-                            margin="10px"
+                            margin="25px"
                         >
                             <Image
                                 w="50%"
@@ -133,16 +133,20 @@ function PainelAdmin() {
                                             color="#181818"
                                             fontWeight="bold"
                                             fontSize="18px"
+                                            marginLeft="5px"
                                         >
                                             Data:
                                         </Box>
-                                        <Box
-                                            color="#ABABAB"
-                                            fontWeight="bold"
-                                            fontSize="18px"
-                                        >
-                                            {item.data}
-                                        </Box>
+                                        <>
+                                            <Box
+                                                color="#ABABAB"
+                                                fontWeight="bold"
+                                                fontSize="18px"
+                                                marginLeft="5px"
+                                            >
+                                                {item.data}
+                                            </Box>
+                                        </>
                                     </Box>
                                     <Box
                                         color="#3CB371"
@@ -152,6 +156,7 @@ function PainelAdmin() {
                                         {item.formattedPrice}
                                     </Box>
                                     <Badge
+                                        margin="10px"
                                         borderRadius="full"
                                         px="2"
                                         colorScheme="teal"
@@ -162,8 +167,8 @@ function PainelAdmin() {
                                         <Button
                                             color="#E7E7E7"
                                             bg="#DA4167"
-                                            w="131px"
-                                            h="28px"
+                                            w="110px"
+                                            h="25px"
                                             borderRadios="10px"
                                         >
                                             Aceitar
@@ -191,10 +196,10 @@ function PainelAdmin() {
                     className="proximo"
                     onClick={() => console.log("deu tambem")}
                 >
-                    <AiOutlineArrowLeft />
+                    <AiOutlineArrowLeft font-size="30px" />
                 </button>
-                <button className="proximo" onClick={() => console.log("deu")}>
-                    <AiOutlineArrowRight />
+                <button className="anterior" onClick={() => console.log("deu")}>
+                    <AiOutlineArrowRight font-size="30px" />
                 </button>
             </Box>
         </>
