@@ -2,6 +2,9 @@ import styled from "styled-components"
 
 export const PedidosBG = styled.div`
     font-family: "Nunito";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 export const PedidosMain = styled.main`
@@ -9,6 +12,8 @@ export const PedidosMain = styled.main`
     display: flex;
     flex-direction: column;
     gap: 28px;
+    width: 100%;
+    max-width: 1280px;
 
     h1 {
         font-weight: 700;
@@ -47,12 +52,19 @@ export const FormSection = styled.div`
         props.direction === "column" ? "column" : "row"};
     width: 100%;
     justify-content: space-between;
+    align-items: ${(props) => (props.type === "medidas" ? "center" : "unset")};
     flex: ${(props) => props.flex || "unset"};
     select,
     input {
-        border: 1px solid #181818;
         width: ${(props) => (props.direction === "column" ? "100%" : "50%")};
         height: ${(props) => props.direction && "100%"};
+    }
+    label {
+        font-weight: 700;
+        font-size: 15px;
+        min-width: fit-content;
+        display: flex;
+        align-items: center;
     }
 `
 

@@ -1,6 +1,13 @@
 import ThemeHeader from "../../components/ThemeHeader"
-import { Button, Textarea } from "@chakra-ui/react"
-
+import {
+    Button,
+    Textarea,
+    Input,
+    InputGroup,
+    Select,
+    InputRightAddon
+} from "@chakra-ui/react"
+import { MdHttp } from "react-icons/md"
 import {
     ButtonContainer,
     FormSection,
@@ -21,20 +28,39 @@ function Pedidos() {
                         <h2>Peça</h2>
                         <FormSection direction="column">
                             <label>Modelagem</label>
-                            <select>
-                                <option>Feminina</option>
-                                <option>Masculina</option>
-                            </select>
+                            <Select
+                                minH="46px"
+                                bg="#EAEAEA"
+                                borderColor="#6B6B6B"
+                                borderWidth="2px"
+                                placeholder="Selecione uma opção"
+                            >
+                                <option value="Feminina">Feminina</option>
+                                <option value="Masculina">Masculina</option>
+                            </Select>
                         </FormSection>
                         <FormSection direction="column">
                             <label>Tipo de peça</label>
-                            <select>
-                                <option>Blusa</option>
-                            </select>
+                            <Select
+                                minH="46px"
+                                bg="#EAEAEA"
+                                borderColor="#6B6B6B"
+                                borderWidth="2px"
+                                placeholder="Selecione uma opção"
+                            >
+                                <option value="Blusa">Blusa</option>
+                                <option value="Vestido">Vestido</option>
+                            </Select>
                         </FormSection>
                         <FormSection direction="column">
                             <label>Imagem de referência</label>
-                            <input />
+                            <Input
+                                padding="8px 16px"
+                                bg="#EAEAEA"
+                                borderColor="#6B6B6B"
+                                borderWidth="2px"
+                                placeholder="URL do site"
+                            />
                         </FormSection>
                         <FormSection direction="column" flex="1">
                             <label>Observações sobre o modelo</label>
@@ -42,6 +68,9 @@ function Pedidos() {
                                 placeholder="Insira detalhes adicionais que deseja no modelo escolhido..."
                                 resize="none"
                                 flex="1"
+                                bg="#EAEAEA"
+                                borderColor="#6B6B6B"
+                                borderWidth="2px"
                             />
                         </FormSection>
                     </PedidosCard>
@@ -49,59 +78,270 @@ function Pedidos() {
                         <h2>Medidas - Circunferências</h2>
                         <FormSection>
                             <label>Busto / Tórax</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Cintura</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Quadril</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Braço (Biceps)</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Punho</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Coxa</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Joelho</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
-                        <FormSection>
+                        <FormSection type="medidas">
                             <label>Tornozelo</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                     </PedidosCard>
                     <PedidosCard>
                         <h2>Medidas Adicionais</h2>
                         <FormSection>
                             <label>Largura Ombro</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Comp. Total</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection>
                             <label>Comp. Manga</label>
-                            <input />
+                            <InputGroup
+                                d="flex"
+                                justifyContent="flex-end"
+                                w="50%"
+                            >
+                                <Input
+                                    padding="10px"
+                                    bg="#EAEAEA"
+                                    borderColor="#6B6B6B"
+                                    borderWidth="2px"
+                                    textAlign="right"
+                                />
+                                <InputRightAddon
+                                    bg="#6B6B6B"
+                                    borderWidth="2px"
+                                    borderColor="#6B6B6B"
+                                    color="#EAEAEA"
+                                    children="cm"
+                                />
+                            </InputGroup>
                         </FormSection>
                         <FormSection direction="column" flex="1">
                             <label>
                                 Outras medidas que julgar necessárias:
                             </label>
                             <Textarea
-                                placeholder="Insira detalhes adicionais que deseja no modelo escolhido..."
                                 resize="none"
                                 flex="1"
+                                bg="#EAEAEA"
+                                borderColor="#6B6B6B"
+                                borderWidth="2px"
                             />
                         </FormSection>
                     </PedidosCard>
