@@ -127,7 +127,6 @@ export default function Cadastro() {
                     gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
                 >
-
                     <ImgLogo
                         src={logo}
                         alt="Na Medida Ateliê"
