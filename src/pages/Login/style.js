@@ -181,21 +181,17 @@ export const DivContainerLogin = styled.div`
 
 export const ImgLogo = styled.img`
     display: flex;
-
     align-items: flex-start;
-    img {
-        width: 8rem;
-        cursor: pointer;
-        :hover {
-            border-bottom: dashed 2px #d94167;
-        }
-    }
+    cursor: pointer;
 
     width: 9rem;
     justify-self: flex-start;
     margin: 0.5rem 3rem;
     align-self: center;
 
+    :hover {
+        border-bottom: dashed 2px #d94167;
+    }
 
     @media (min-width: 1024px) {
         align-self: flex-start;

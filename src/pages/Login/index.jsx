@@ -77,14 +77,12 @@ export default function Login() {
                 </div>
 
                 <div className="divResponsiva">
-                    {/* <DivHeaderLogin>
-                        <img
-                            src={logo}
-                            alt="Na Medida Ateliê"
-                            title="Página Inicial"
-                            onClick={() => history.push("/")}
-                        />
-                    </DivHeaderLogin> */}
+                    <ImgLogo
+                        src={logo}
+                        alt="Na Medida Ateliê"
+                        title="Página Inicial"
+                        onClick={() => history.push("/")}
+                    />
 
                     <div className="divFormulario">
                         <div>
