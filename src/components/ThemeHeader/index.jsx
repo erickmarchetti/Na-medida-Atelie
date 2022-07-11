@@ -1,5 +1,5 @@
 import { Flex, Image } from "@chakra-ui/react"
-import logo from "../../Images/logo.svg"
+import logo from "../../assets/Images/logo.svg"
 
 import { StyledHeader } from "./style.js"
 
