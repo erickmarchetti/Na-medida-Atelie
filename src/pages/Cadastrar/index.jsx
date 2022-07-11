@@ -26,7 +26,7 @@ import {
 import { useState, useEffect } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import logo from "../../assets/Images/logo.svg"
-import { ImgLogo } from "./style"
+import { DivContainerCadastro, ImgLogo } from "./style"
 
 export default function Cadastro() {
     const history = useHistory()
@@ -97,7 +97,7 @@ export default function Cadastro() {
     }, [errors])
 
     return (
-        <>
+        <DivContainerCadastro>
             <Stack
                 direction="row"
                 width="100%"
@@ -127,7 +127,12 @@ export default function Cadastro() {
                     gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
                 >
-                    <ImgLogo src={logo} alt="Na Medida Ateliê" />
+                    <ImgLogo
+                        src={logo}
+                        alt="Na Medida Ateliê"
+                        title="Página Inicial"
+                        onClick={() => history.push("/")}
+                    />
                     <Stack
                         as="form"
                         w={{ base: "90%", md: "50%", lg: "400px" }}
@@ -325,6 +330,8 @@ export default function Cadastro() {
                         <Text paddingY={2} textAlign="center" fontSize="12px">
                             Já possui conta? Faça o
                             <Link
+                                className="botaoLogin"
+                                title="Página de Login"
                                 to="/login"
                                 style={{ color: "var(--Color-Primary-Main)" }}
                             >
@@ -335,6 +342,6 @@ export default function Cadastro() {
                     </Stack>
                 </Flex>
             </Stack>
-        </>
+        </DivContainerCadastro>
     )
 }
