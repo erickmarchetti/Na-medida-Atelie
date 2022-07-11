@@ -23,7 +23,7 @@ import {
     Flex,
     Box
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import logo from "../../assets/Images/logo.svg"
 import { ImgLogo } from "./style"
@@ -44,10 +44,13 @@ export default function Cadastro() {
                 "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$",
                 "Formato de senha incorreto! São necessarios 8 caracteres, ter letras maiúsculas e minúsculas, números e ao menos um símbolo"
             ),
-        passwordconfirm: yup
+        passwordConfirm: yup
             .string()
             .required("Confirmação de senha é obrigatório!")
-            .oneOf([yup.ref("password")], "Senhas diferentes")
+            .oneOf([yup.ref("password")], "Senhas diferentes"),
+        checkbox: yup
+            .boolean()
+            .oneOf([true], "Por favor, aceite os termos de serviço!")
     })
     const {
         register,
@@ -61,6 +64,8 @@ export default function Cadastro() {
     const [showb, setShowb] = useState(false)
     const handleClickb = () => setShowb(!showb)
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const formErrorStyle = {
         color: "var(--Red)",
         fontWeight: "bold",
@@ -73,31 +78,49 @@ export default function Cadastro() {
     }
 
     function registro(data) {
+        setIsLoading(true)
+
         Api.post("/register", data)
 
             .then(() => {
                 toast.success("Cadastro realizado com sucesso!")
-                return history.push("/login")
+                history.push("/login")
             })
             .catch(() => {
                 toast.error("Ops, erro ao criar a conta. Tente novamente.")
             })
+            .finally(() => setIsLoading(false))
     }
+
+    useEffect(() => {
+        !!errors?.checkbox && toast.warn(errors.checkbox.message)
+    }, [errors])
 
     return (
         <>
-            <Stack direction="row" width="100%">
+            <Stack
+                direction="row"
+                width="100%"
+                border={{ lg: "solid 1px var(--Black)" }}
+                bg={
+                    "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
+                }
+            >
                 <Box display={{ base: "none", lg: "block" }}>
                     <img
                         src={custommadewoman}
                         alt="custommadewoman"
-                        style={{ height: "100vh", position: "sticky", top: 0 }}
+                        style={{
+                            height: "100vh",
+                            position: "sticky",
+                            top: 0
+                        }}
                     />
                 </Box>
 
                 <Flex
-                    flexDirection="row-reverse"
-                    alignitens={{ base: "center", lg: "flex-end" }}
+                    flexDirection={{ base: "column", lg: "row-reverse" }}
+                    alignItems={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
                     marginRight="4rem"
                     max-height="100vh"
@@ -108,6 +131,7 @@ export default function Cadastro() {
                     <Stack
                         as="form"
                         w={{ base: "90%", md: "50%", lg: "400px" }}
+                        transition="0.3s"
                         maxH={"100vh"}
                         onSubmit={handleSubmit(registro)}
                         sx={{
@@ -122,7 +146,7 @@ export default function Cadastro() {
                         }}
                     >
                         <Heading textAlign="center">Cadastro</Heading>
-                        <FormControl isInvalid>
+                        <FormControl>
                             <FormLabel htmlFor="name" sx={formErrorLabelStyle}>
                                 Nome
                             </FormLabel>
@@ -130,7 +154,8 @@ export default function Cadastro() {
                                 id="name"
                                 placeholder="Nome completo"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="var(--Red)"
+                                isInvalid={errors.name}
+                                errorBorderColor="red.500"
                                 {...register("name")}
                             />
 
@@ -149,7 +174,8 @@ export default function Cadastro() {
                                 id="email"
                                 placeholder="email@email.com"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="#e53e3e"
+                                isInvalid={errors.email}
+                                errorBorderColor="red.500"
                                 {...register("email")}
                             />
 
@@ -191,7 +217,8 @@ export default function Cadastro() {
                                     type={show ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
-                                    errorBorderColor="#e53e3e"
+                                    isInvalid={errors.password}
+                                    errorBorderColor="red.500"
                                     {...register("password")}
                                 />
                             </InputGroup>
@@ -206,7 +233,7 @@ export default function Cadastro() {
                         <FormControl>
                             <FormLabel
                                 sx={formErrorLabelStyle}
-                                htmlFor="passwordconfirm"
+                                htmlFor="passwordConfirm"
                             >
                                 Confirmar senha
                             </FormLabel>
@@ -230,18 +257,19 @@ export default function Cadastro() {
                                     />
                                 </InputRightElement>
                                 <Input
-                                    id="passwordconfirm"
+                                    id="passwordConfirm"
                                     type={showb ? "text" : "password"}
                                     placeholder="•••••••••••••••••••••"
                                     borderColor="var(--Grey-4)"
-                                    errorBorderColor="#e53e3e"
-                                    {...register("passwordconfirm")}
+                                    isInvalid={errors.passwordConfirm}
+                                    errorBorderColor="red.500"
+                                    {...register("passwordConfirm")}
                                 />
                             </InputGroup>
 
-                            {errors.passwordconfirm && (
+                            {errors.passwordConfirm && (
                                 <FormHelperText sx={formErrorStyle}>
-                                    {errors?.passwordconfirm.message}
+                                    {errors?.passwordConfirm.message}
                                 </FormHelperText>
                             )}
                         </FormControl>
@@ -257,7 +285,7 @@ export default function Cadastro() {
                                 id="avatar"
                                 placeholder="Url da imagem"
                                 borderColor="var(--Grey-4)"
-                                errorBorderColor="#e53e3e"
+                                errorBorderColor="red.500"
                                 {...register("avatar")}
                             />
                         </FormControl>
@@ -270,14 +298,15 @@ export default function Cadastro() {
                                     fontSize: "12px"
                                 }}
                                 colorScheme="green"
-                                defaultChecked
+                                {...register("checkbox")}
                             >
                                 Li e concordo com os termos de uso e privacidade
                             </Checkbox>
                         </Stack>
 
                         <Button
-                            type="submit" // mt={5}
+                            isLoading={isLoading}
+                            type="submit"
                             _active={false}
                             borderRadius={"10px"}
                             _hover={{
