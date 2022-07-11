@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Image } from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
+
 import semImagem from "../../assets/Images/no-image.svg"
 
 import { StyledHeader } from "./style.js"
+
+import { useHistory } from "react-router-dom"
 
 import { useContext } from "react"
 import { UserContext } from "../../providers/user"
@@ -11,6 +14,8 @@ import { useEffect } from "react"
 
 function ThemeHeader() {
     const { pegarDadosUser, user } = useContext(UserContext)
+
+    const history = useHistory()
 
     useEffect(() => {
         pegarDadosUser()
@@ -31,7 +36,7 @@ function ThemeHeader() {
                     alt="Na medida ateliê"
                     w={{ base: "78.55px", sm: "126.75px" }}
                     h={{ base: "38.88", sm: "52.08px" }}
-                    onClick={() => window.location.reload()}
+                    onClick={() => history.push("/")}
                 />
 
                 {!!user && (

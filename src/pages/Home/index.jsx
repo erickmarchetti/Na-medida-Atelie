@@ -96,6 +96,7 @@ function Home() {
             )}
             <HomeMain>
                 <HomeContainer>
+                
                     {sobreNos ? (
                         <>
                             <Text
@@ -103,7 +104,7 @@ function Home() {
                                 maxW="90%"
                                 textAlign="justify"
                                 fontSize="lg"
-                                fontWeight="bold"
+                                fontWeight="bold"                   
                             >
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Pellentesque a elementum
@@ -119,6 +120,7 @@ function Home() {
                                 eleifend mauris, eget nunc sed leo in ut
                                 faucibus
                             </Text>
+                            
                             <Stack alignItems="flex-start" marginTop="auto">
                                 <Stack alignItems="center" direction="row">
                                     <Text
@@ -337,6 +339,7 @@ function Home() {
                                           }
                                 }
                                 borderWidth={2}
+
                                 padding="20px 35px"
                                 fontSize="20px"
                                 fontWeight="700"
