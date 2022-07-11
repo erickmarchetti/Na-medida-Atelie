@@ -99,6 +99,7 @@ function Home() {
                                     bgColor: "#A6324F",
                                     borderColor: "#A6324F"
                                 }}
+                                title="Página de Avaliações"
                             >
                                 Veja o que nossos clientes dizem
                             </Button>
@@ -162,6 +163,7 @@ function Home() {
                                     bgColor: "#A6324F",
                                     borderColor: "#A6324F"
                                 }}
+                                title="Página de Avaliações"
                             >
                                 Veja o que nossos clientes dizem
                             </Button>
