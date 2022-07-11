@@ -26,6 +26,7 @@ export const DivContainerLogin = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 100vw;
+
     .imgHomem {
         display: flex;
         img {
@@ -106,6 +107,9 @@ export const DivContainerLogin = styled.div`
         }
         a {
             color: var(--Color-Primary-Main);
+            :hover {
+                border-bottom: dashed 2px #d94167;
+            }
         }
     }
     .loginForm {
@@ -174,6 +178,10 @@ export const DivHeaderLogin = styled.header`
     align-items: flex-start;
     img {
         width: 8rem;
+        cursor: pointer;
+        :hover {
+            border-bottom: dashed 2px #d94167;
+        }
     }
 
     @media (max-width: 1200px) {

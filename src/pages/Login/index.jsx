@@ -77,7 +77,12 @@ export default function Login() {
 
                 <div className="divResponsiva">
                     <DivHeaderLogin>
-                        <img src={logo} alt="Na Medida Ateliê" />
+                        <img
+                            src={logo}
+                            alt="Na Medida Ateliê"
+                            title="Página Inicial"
+                            onClick={() => history.push("/")}
+                        />
                     </DivHeaderLogin>
                     <div className="divFormulario">
                         <div>
@@ -166,7 +171,13 @@ export default function Login() {
                                 </Button>
                                 <p>
                                     Não possui uma conta?
-                                    <a href="/register"> Cadastre-se</a>
+                                    <a
+                                        href="/register"
+                                        title="Página de Cadastro"
+                                    >
+                                        {" "}
+                                        Cadastre-se
+                                    </a>
                                 </p>
                             </FormControl>
                         </form>
