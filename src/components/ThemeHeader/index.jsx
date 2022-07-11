@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Image } from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
+import semImagem from "../../assets/Images/no-image.svg"
 
 import { StyledHeader } from "./style.js"
 
@@ -47,7 +48,7 @@ function ThemeHeader() {
                         </span>
 
                         <Image
-                            src={user?.avatar}
+                            src={user?.avatar !== "" ? user.avatar : semImagem}
                             w={{ base: "30px", sm: "50px" }}
                             h={{ base: "30px", sm: "50px" }}
                             objectFit="cover"
