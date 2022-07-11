@@ -10,9 +10,11 @@ import {
 } from "./style"
 
 import logo from "../../assets/Images/logo_mobile.svg"
+import { useHistory } from "react-router-dom"
 
 function Home() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+    const history = useHistory()
 
     return (
         <HomeBG>
@@ -24,6 +26,8 @@ function Home() {
                         color="#181818"
                         p="5px 25px"
                         boxShadow="dark-lg"
+                        _active={false}
+                        onClick={() => history.push("/login")}
                         fontWeight="700"
                         fontSize="22px"
                         _hover={{
@@ -38,8 +42,10 @@ function Home() {
                         bgColor="#DA4167"
                         color="#FAFAFA"
                         p="5px 30px"
+                        onClick={() => history.push("/register")}
                         boxShadow="dark-lg"
                         fontWeight="700"
+                        _active={false}
                         fontSize="22px"
                         _hover={{
                             bgColor: "#A6324F",
@@ -55,8 +61,10 @@ function Home() {
                         color="#FAFAFA"
                         p="5px 20px"
                         boxShadow="dark-lg"
+                        // onClick={() => setAboutUs(true)}
                         fontWeight="700"
                         fontSize="22px"
+                        _active={false}
                         _hover={{
                             bgColor: "#A6324F",
                             borderColor: "#A6324F"
@@ -82,6 +90,8 @@ function Home() {
                                 fontWeight="700"
                                 bgColor="#DA4167"
                                 color="#FAFAFA"
+                                _active={false}
+                                onClick={() => history.push("/avaliacoes")}
                                 w="350px"
                                 minH="60px"
                                 boxShadow="dark-lg"
@@ -89,6 +99,7 @@ function Home() {
                                     bgColor: "#A6324F",
                                     borderColor: "#A6324F"
                                 }}
+                                title="Página de Avaliações"
                             >
                                 Veja o que nossos clientes dizem
                             </Button>
@@ -103,6 +114,8 @@ function Home() {
                                 padding="20px 35px"
                                 fontSize="20px"
                                 w="40vw"
+                                onClick={() => history.push("/login")}
+                                _active={false}
                                 boxShadow="dark-lg"
                                 fontWeight="700"
                                 _hover={{
@@ -118,7 +131,9 @@ function Home() {
                                 color="#FAFAFA"
                                 padding="20px 35px"
                                 fontSize="20px"
+                                onClick={() => history.push("/register")}
                                 w="40vw"
+                                _active={false}
                                 boxShadow="dark-lg"
                                 fontWeight="700"
                                 _hover={{
@@ -138,14 +153,17 @@ function Home() {
                                 padding="20px 0px"
                                 fontSize="18px"
                                 fontWeight="700"
+                                _active={false}
                                 bgColor="#DA4167"
                                 color="#FAFAFA"
+                                onClick={() => history.push("/avaliacoes")}
                                 w="100%"
                                 boxShadow="dark-lg"
                                 _hover={{
                                     bgColor: "#A6324F",
                                     borderColor: "#A6324F"
                                 }}
+                                title="Página de Avaliações"
                             >
                                 Veja o que nossos clientes dizem
                             </Button>
@@ -155,10 +173,11 @@ function Home() {
                                 padding="20px 35px"
                                 fontSize="20px"
                                 fontWeight="700"
+                                // onClick={() => setAboutUs(true)}
                                 bgColor="#DA4167"
                                 color="#FAFAFA"
                                 w="100%"
-                                boxShadow="dark-lg"
+                                _active={false}
                                 _hover={{
                                     bgColor: "#A6324F",
                                     borderColor: "#A6324F"

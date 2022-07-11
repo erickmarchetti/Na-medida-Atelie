@@ -1,12 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Image } from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
 
+import semImagem from "../../assets/Images/no-image.svg"
+
 import { StyledHeader } from "./style.js"
 
+import { useHistory } from "react-router-dom"
+
+import { useContext } from "react"
+import { UserContext } from "../../providers/user"
+import { useEffect } from "react"
+
 function ThemeHeader() {
-    const nomeCompleto = "Icaro algo da algo"
-    const primeiroNome = nomeCompleto.split(" ")[0]
-    const restoNome = nomeCompleto.split(" ").slice(1).join(" ")
+    const { pegarDadosUser, user } = useContext(UserContext)
+
+    const history = useHistory()
+
+    useEffect(() => {
+        pegarDadosUser()
+    }, [])
 
     return (
         <StyledHeader>
@@ -23,23 +36,24 @@ function ThemeHeader() {
                     alt="Na medida ateliê"
                     w={{ base: "78.55px", sm: "126.75px" }}
                     h={{ base: "38.88", sm: "52.08px" }}
-                    onClick={() => window.location.reload()}
+                    onClick={() => history.push("/")}
                 />
 
-                {true && (
+                {!!user && (
                     <Flex
                         h="full"
                         flexFlow="row nowrap"
                         alignItems="center"
                         gap="9px"
                     >
-                        <span>{primeiroNome}</span>
-                        {!!restoNome && (
-                            <span className="restoNome">{restoNome}</span>
-                        )}
+                        <span>{user?.name?.split(" ")[0]}</span>
+
+                        <span className="restoNome">
+                            {user?.name?.split(" ")?.slice(1)?.join(" ")}
+                        </span>
 
                         <Image
-                            src="https://images5.alphacoders.com/836/836289.jpg"
+                            src={user?.avatar !== "" ? user.avatar : semImagem}
                             w={{ base: "30px", sm: "50px" }}
                             h={{ base: "30px", sm: "50px" }}
                             objectFit="cover"

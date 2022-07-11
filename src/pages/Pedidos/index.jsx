@@ -7,7 +7,6 @@ import {
     Select,
     InputRightAddon
 } from "@chakra-ui/react"
-import { MdHttp } from "react-icons/md"
 import {
     ButtonContainer,
     FormSection,
