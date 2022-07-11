@@ -6,7 +6,8 @@ import {
     IconButton,
     Input,
     InputGroup,
-    InputRightElement
+    InputRightElement,
+    Stack
 } from "@chakra-ui/react"
 import Api from "../../Api"
 import * as yup from "yup"
@@ -16,9 +17,9 @@ import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
-import { DivContainerLogin, DivHeaderLogin } from "./style"
+import { DivContainerLogin, ImgLogo } from "./style"
 import { toast } from "react-toastify"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 export default function Login() {
     const [show, setShow] = useState(false)
@@ -76,9 +77,12 @@ export default function Login() {
                 </div>
 
                 <div className="divResponsiva">
-                    <DivHeaderLogin>
-                        <img src={logo} alt="Na Medida Ateliê" />
-                    </DivHeaderLogin>
+                    <Link to="/">
+                        <Stack cursor="pointer">
+                            <ImgLogo src={logo} alt="Na Medida Ateliê" />
+                        </Stack>
+                    </Link>
+
                     <div className="divFormulario">
                         <div>
                             <h1>É um prazer ver você novamente!</h1>
