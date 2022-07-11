@@ -12,12 +12,11 @@ import Api from "../../Api"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useState, useContext } from "react"
+import { useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, DivHeaderLogin } from "./style"
-import { UserContext } from "../../providers/user"
 import { toast } from "react-toastify"
 import { useHistory } from "react-router-dom"
 
@@ -53,14 +52,14 @@ export default function Login() {
         margin: "2px 16px"
     }
 
-    const { setUser } = useContext(UserContext)
-
     const registro = (data) => {
         setIsLoading(true)
 
         Api.post("/login", data)
             .then((res) => {
-                setUser(res.data)
+                window.localStorage.setItem("@user/token", res.data.accessToken)
+                window.localStorage.setItem("@user/id", res.data.user.id)
+
                 history.push("/painel")
             })
             .catch(() => {
