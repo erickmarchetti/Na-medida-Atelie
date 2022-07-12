@@ -5,6 +5,7 @@ export const StyledCard = styled.li`
 
     width: 84.6875vw;
     max-width: 377px;
+    min-width: 271px;
     border-radius: 10px;
     padding: 0 18px 29px 18px;
 
