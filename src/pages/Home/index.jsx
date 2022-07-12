@@ -23,6 +23,8 @@ import Erick from "../../assets/AvatarImages/Erick.png"
 import Izamara from "../../assets/AvatarImages/Izamara.jpg"
 import Hitalo from "../../assets/AvatarImages/Hitalo.png"
 import Raquel from "../../assets/AvatarImages/Raquel.jpeg"
+import Andryws from "../../assets/AvatarImages/Andryws.jfif"
+import Fidel from "../../assets/AvatarImages/Fidel.jpg"
 
 function Home() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
@@ -86,7 +88,8 @@ function Home() {
                         fontSize="22px"
                         _active={false}
                     >
-                        Sobre nós{" "}
+                        {sobreNos ? "Voltar" : "Sobre nós"}
+                          
                         <AiFillHeart
                             fontSize="18px"
                             color={sobreNos ? "#DA4167" : "#FAFAFA"}
@@ -96,7 +99,6 @@ function Home() {
             )}
             <HomeMain>
                 <HomeContainer>
-                
                     {sobreNos ? (
                         <>
                             <Text
@@ -104,7 +106,7 @@ function Home() {
                                 maxW="90%"
                                 textAlign="justify"
                                 fontSize="lg"
-                                fontWeight="bold"                   
+                                fontWeight="bold"
                             >
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. Pellentesque a elementum
@@ -120,7 +122,7 @@ function Home() {
                                 eleifend mauris, eget nunc sed leo in ut
                                 faucibus
                             </Text>
-                            
+
                             <Stack alignItems="flex-start" marginTop="auto">
                                 <Stack alignItems="center" direction="row">
                                     <Text
@@ -208,7 +210,7 @@ function Home() {
                                             border="2px solid #181818"
                                             size="lg"
                                             name="Fidel Marques"
-                                            src={Erick}
+                                            src={Fidel}
                                         />
                                         <Text fontFamily="Dancing Script">
                                             Fidel Marques
@@ -222,7 +224,7 @@ function Home() {
                                             border="2px solid #181818"
                                             size="lg"
                                             name="Andryws Görtz"
-                                            src={Erick}
+                                            src={Andryws}
                                         />
                                         <Text fontFamily="Dancing Script">
                                             Andryws Görtz
@@ -339,7 +341,6 @@ function Home() {
                                           }
                                 }
                                 borderWidth={2}
-
                                 padding="20px 35px"
                                 fontSize="20px"
                                 fontWeight="700"
@@ -347,7 +348,8 @@ function Home() {
                                 w="100%"
                                 _active={false}
                             >
-                                Sobre nós{" "}
+                                {sobreNos ? "Voltar" : "Sobre nós"}
+                                  
                                 <AiFillHeart
                                     color={sobreNos ? "#DA4167" : "#FAFAFA"}
                                 />
