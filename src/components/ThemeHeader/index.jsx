@@ -10,7 +10,7 @@ import { useContext } from "react"
 import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
-function ThemeHeader() {
+function ThemeHeader({ admin }) {
     const { pegarDadosUser, user } = useContext(UserContext)
 
     useEffect(() => {
@@ -50,6 +50,24 @@ function ThemeHeader() {
 
                         <Image
                             src={user?.avatar !== "" ? user.avatar : semImagem}
+                            w={{ base: "30px", sm: "50px" }}
+                            h={{ base: "30px", sm: "50px" }}
+                            objectFit="cover"
+                            borderRadius="100%"
+                        />
+                    </Flex>
+                )}
+                {!!admin && (
+                    <Flex
+                        h="full"
+                        flexFlow="row nowrap"
+                        alignItems="center"
+                        gap="9px"
+                    >
+                        <span>Admin</span>
+
+                        <Image
+                            src={semImagem}
                             w={{ base: "30px", sm: "50px" }}
                             h={{ base: "30px", sm: "50px" }}
                             objectFit="cover"

@@ -205,9 +205,9 @@ export default function Cadastro() {
                                         onClick={handleClick}
                                         icon={
                                             show ? (
-                                                <ViewOffIcon />
-                                            ) : (
                                                 <ViewIcon />
+                                            ) : (
+                                                <ViewOffIcon />
                                             )
                                         }
                                     />
@@ -249,9 +249,9 @@ export default function Cadastro() {
                                         onClick={handleClickb}
                                         icon={
                                             showb ? (
-                                                <ViewOffIcon />
-                                            ) : (
                                                 <ViewIcon />
+                                            ) : (
+                                                <ViewOffIcon />
                                             )
                                         }
                                     />

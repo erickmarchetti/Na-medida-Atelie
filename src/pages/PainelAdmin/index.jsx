@@ -6,9 +6,11 @@ import {
     Badge,
     Box,
     Button,
-    useDisclosure
+    useDisclosure,
+    Stack,
+    IconButton
 } from "@chakra-ui/react"
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 
 function PainelAdmin() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -16,7 +18,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "Em andamento"
@@ -24,7 +26,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "Em andamento"
@@ -32,7 +34,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "Em andamento"
@@ -40,7 +42,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "Em andamento"
@@ -48,7 +50,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "Em andamento"
@@ -56,7 +58,7 @@ function PainelAdmin() {
         {
             imageUrl: "https://bit.ly/2Z4KKcF",
             imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
+            title: "Vestido",
             data: "20/08/22",
             formattedPrice: "R$150,00",
             status: "novo"
@@ -64,42 +66,51 @@ function PainelAdmin() {
     ]
     return (
         <>
-            <ThemeHeader />
+            <ThemeHeader admin />
             <ModalMedidas isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
             <>
                 <>
-                    <Text
-                        fontSize="5xl"
-                        color=" #181818"
-                        align="center"
-                        paddingTop="50px"
-                    >
-                        Área da costureira - Pedidos
-                    </Text>
+                    <Stack maxW="1280px" margin="auto">
+                        <Text
+                            fontSize={{ base: "1.5rem", lg: "4xl" }}
+                            color=" #181818"
+                            textAlign={{ base: "center", lg: "start" }}
+                            fontWeight="bold"
+                            padding="50px 20px 0"
+                            fontFamily="Nunito"
+                        >
+                            Area da costureira - Pedidos
+                        </Text>
+                    </Stack>
                 </>
                 <Box
                     display="flex"
-                    flexWrap="wrap"
-                    justifyContent="space-around"
+                    flexWrap={{ base: "nowrap", lg: "wrap" }}
+                    overflow="auto"
+                    justifyContent={{ base: "flex-start", lg: "center" }}
+                    margin="auto"
+                    maxW={{ lg: "1280px" }}
+                    w={{ base: "84%", lg: "95%" }}
                 >
                     {property.map((item, index) => (
                         <Box
                             onClick={onOpen}
                             cursor="pointer"
                             key={index}
-                            yardisplay="flex"
-                            height="178px"
-                            width="375px"
+                            height={{ base: "auto", lg: "178px" }}
+                            maxWidth={{ lg: "375px" }}
+                            minWidth={{ base: "240px", lg: "350px" }}
                             background="#FAFAFA"
                             border="2px solid #181818"
                             borderRadius="25px"
                             overflow="hidden"
                             display="flex"
                             alignItems="center"
-                            margin="25px"
+                            margin={{ base: "15px", lg: "25px" }}
+                            flexDirection={{ base: "column", lg: "row" }}
                         >
                             <Image
-                                w="50%"
+                                w={{ base: "100%", lg: "50%" }}
                                 h="100%"
                                 src={item.imageUrl}
                                 alt={item.imageAlt}
@@ -108,100 +119,108 @@ function PainelAdmin() {
                             <Box
                                 display="flex"
                                 maxW="50%"
+                                gap="5px"
                                 flexDirection="column"
-                                paddingLeft="35px"
+                                paddingLeft={{ base: 0, lg: "35px" }}
+                                alignItems="center"
+                                textAlign="center"
                             >
-                                <Box
-                                    display="flex"
-                                    alignItems="center"
-                                    flexDirection="column"
-                                    textAlign="center"
+                                <Text
+                                    mt="1"
+                                    fontWeight="bold"
+                                    as="h4"
+                                    lineHeight="tight"
+                                    noOfLines={1}
+                                    fontSize="30px"
+                                    color="#181818"
+                                    fontFamily="Nunito"
                                 >
-                                    <Box
-                                        mt="1"
-                                        fontWeight="semibold"
-                                        as="h4"
-                                        lineHeight="tight"
-                                        noOfLines={1}
-                                        fontSize="30px"
-                                        color="#181818"
+                                    {item.title}
+                                </Text>
+                                <Text
+                                    color="#181818"
+                                    fontWeight="bold"
+                                    fontSize="18px"
+                                    marginLeft="5px"
+                                    fontFamily="Nunito"
+                                >
+                                    Data:
+                                </Text>
+
+                                <Text
+                                    color="#ABABAB"
+                                    fontWeight="bold"
+                                    fontSize="18px"
+                                    marginLeft="5px"
+                                    fontFamily="Nunito"
+                                >
+                                    {item.data}
+                                </Text>
+
+                                <Text
+                                    color="#3CB371"
+                                    fontWeight="bold"
+                                    fontSize="18px"
+                                    fontFamily="Nunito"
+                                >
+                                    {item.formattedPrice}
+                                </Text>
+                                {item.status === "novo" ? (
+                                    <Button
+                                        color="#E7E7E7"
+                                        bg="#DA4167"
+                                        w="110px"
+                                        h="25px"
+                                        borderRadius="lg"
+                                        fontFamily="Nunito"
+                                        lineHeight="25px"
+                                        marginBottom=".5rem"
                                     >
-                                        {item.title}
-                                    </Box>
-                                    <Box display="flex">
-                                        <Box
-                                            color="#181818"
-                                            fontWeight="bold"
-                                            fontSize="18px"
-                                            marginLeft="5px"
-                                        >
-                                            Data:
-                                        </Box>
-                                        <>
-                                            <Box
-                                                color="#ABABAB"
-                                                fontWeight="bold"
-                                                fontSize="18px"
-                                                marginLeft="5px"
-                                            >
-                                                {item.data}
-                                            </Box>
-                                        </>
-                                    </Box>
-                                    <Box
-                                        color="#3CB371"
-                                        fontWeight="bold"
-                                        fontSize="18px"
-                                    >
-                                        {item.formattedPrice}
-                                    </Box>
+                                        Aceitar
+                                    </Button>
+                                ) : (
                                     <Badge
-                                        margin="10px"
-                                        borderRadius="full"
+                                        height="25px"
+                                        borderRadius="lg"
                                         px="2"
                                         colorScheme="teal"
+                                        fontFamily="Nunito"
+                                        lineHeight="25px"
+                                        marginBottom=".5rem"
                                     >
-                                        status
+                                        {item.status}
                                     </Badge>
-                                    {item.status === "novo" ? (
-                                        <Button
-                                            color="#E7E7E7"
-                                            bg="#DA4167"
-                                            w="110px"
-                                            h="25px"
-                                            borderRadios="10px"
-                                        >
-                                            Aceitar
-                                        </Button>
-                                    ) : (
-                                        <Box
-                                            color="gray.500"
-                                            fontWeight="semibold"
-                                            letterSpacing="wide"
-                                            fontSize="xs"
-                                            textTransform="uppercase"
-                                            ml="2"
-                                        >
-                                            {item.status}
-                                        </Box>
-                                    )}
-                                </Box>
+                                )}
                             </Box>
                         </Box>
                     ))}
                 </Box>
             </>
-            <Box display="flex" justifyContent="flex-end">
-                <button
+            <Stack
+                display={{ base: "none", lg: "flex" }}
+                maxWidth="1280px"
+                margin="auto"
+                direction="row"
+                spacing={7}
+                paddingX={12}
+                justifyContent="flex-end"
+            >
+                <IconButton
+                    icon={<FaArrowLeft />}
+                    size="lg"
+                    fontSize="25px"
                     className="proximo"
                     onClick={() => console.log("deu tambem")}
-                >
-                    <AiOutlineArrowLeft font-size="30px" />
-                </button>
-                <button className="anterior" onClick={() => console.log("deu")}>
-                    <AiOutlineArrowRight font-size="30px" />
-                </button>
-            </Box>
+                    aria-label="seta para esquerda"
+                />
+                <IconButton
+                    icon={<FaArrowRight />}
+                    size="lg"
+                    fontSize="25px"
+                    className="proximo"
+                    aria-label="seta para direita"
+                />
+            </Stack>
         </>
     )
 }
