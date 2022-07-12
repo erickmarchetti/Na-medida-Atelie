@@ -88,7 +88,8 @@ function Home() {
                         fontSize="22px"
                         _active={false}
                     >
-                        Sobre nós{" "}
+                        {sobreNos ? "Voltar" : "Sobre nós"}
+                          
                         <AiFillHeart
                             fontSize="18px"
                             color={sobreNos ? "#DA4167" : "#FAFAFA"}
@@ -347,7 +348,8 @@ function Home() {
                                 w="100%"
                                 _active={false}
                             >
-                                Sobre nós{" "}
+                                {sobreNos ? "Voltar" : "Sobre nós"}
+                                  
                                 <AiFillHeart
                                     color={sobreNos ? "#DA4167" : "#FAFAFA"}
                                 />
