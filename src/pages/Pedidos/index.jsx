@@ -5,7 +5,8 @@ import {
     Input,
     InputGroup,
     Select,
-    InputRightAddon
+    InputRightAddon,
+    useMediaQuery
 } from "@chakra-ui/react"
 import {
     ButtonContainer,
@@ -17,18 +18,41 @@ import {
 } from "./style"
 
 function Pedidos() {
+    const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+
     return (
         <PedidosBG>
             <ThemeHeader />
             <PedidosMain>
-                <h1>Novo pedido</h1>
+                {!isLargerThan768 ? (
+                    <h1>Novo pedido</h1>
+                ) : (
+                    <ButtonContainer>
+                        <h1>Novo pedido</h1>
+                        <Button
+                            w="280px"
+                            h="70px"
+                            bg="var(--Color-Primary-Main)"
+                            color="var(--White)"
+                            fontSize="25px"
+                            fontWeight="700"
+                            _hover={{
+                                bgColor: "#A6324F",
+                                borderColor: "#A6324F"
+                            }}
+                        >
+                            Finalizar Pedido
+                        </Button>
+                    </ButtonContainer>
+                )}
                 <PedidosContainer>
                     <PedidosCard>
                         <h2>Peça</h2>
                         <FormSection direction="column">
                             <label>Modelagem</label>
                             <Select
-                                minH="46px"
+                                minH="29px"
+                                h="5vh"
                                 bg="#EAEAEA"
                                 borderColor="#6B6B6B"
                                 borderWidth="2px"
@@ -41,7 +65,8 @@ function Pedidos() {
                         <FormSection direction="column">
                             <label>Tipo de peça</label>
                             <Select
-                                minH="46px"
+                                minH="29px"
+                                h="5vh"
                                 bg="#EAEAEA"
                                 borderColor="#6B6B6B"
                                 borderWidth="2px"
@@ -54,7 +79,9 @@ function Pedidos() {
                         <FormSection direction="column">
                             <label>Imagem de referência</label>
                             <Input
-                                padding="8px 16px"
+                                minH="29px"
+                                h="7vh"
+                                padding="0 16px"
                                 bg="#EAEAEA"
                                 borderColor="#6B6B6B"
                                 borderWidth="2px"
@@ -64,6 +91,7 @@ function Pedidos() {
                         <FormSection direction="column" flex="1">
                             <label>Observações sobre o modelo</label>
                             <Textarea
+                                h="5vh"
                                 placeholder="Insira detalhes adicionais que deseja no modelo escolhido..."
                                 resize="none"
                                 flex="1"
@@ -81,13 +109,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -95,6 +127,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -104,13 +140,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -118,6 +158,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -127,13 +171,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -141,6 +189,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -150,13 +202,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -164,6 +220,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -173,13 +233,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -187,6 +251,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -196,13 +264,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -210,6 +282,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -219,13 +295,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -233,6 +313,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -242,13 +326,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -256,6 +344,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -268,13 +360,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -282,6 +378,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -291,13 +391,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -305,6 +409,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -314,13 +422,17 @@ function Pedidos() {
                                 d="flex"
                                 justifyContent="flex-end"
                                 w="50%"
+                                h="5vh"
+                                minH="29px"
                             >
                                 <Input
-                                    padding="10px"
                                     bg="#EAEAEA"
                                     borderColor="#6B6B6B"
                                     borderWidth="2px"
                                     textAlign="right"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
                                 />
                                 <InputRightAddon
                                     bg="#6B6B6B"
@@ -328,6 +440,10 @@ function Pedidos() {
                                     borderColor="#6B6B6B"
                                     color="#EAEAEA"
                                     children="cm"
+                                    h="70%"
+                                    alignSelf="center"
+                                    p="4px"
+                                    fontSize="14px"
                                 />
                             </InputGroup>
                         </FormSection>
@@ -345,18 +461,24 @@ function Pedidos() {
                         </FormSection>
                     </PedidosCard>
                 </PedidosContainer>
-                <ButtonContainer>
-                    <Button
-                        w="280px"
-                        h="70px"
-                        bg="var(--Color-Primary-Main)"
-                        color="var(--White)"
-                        fontSize="25px"
-                        fontWeight="700"
-                    >
-                        Finalizar Pedido
-                    </Button>
-                </ButtonContainer>
+                {!isLargerThan768 && (
+                    <ButtonContainer>
+                        <Button
+                            w="280px"
+                            h="70px"
+                            bg="var(--Color-Primary-Main)"
+                            color="var(--White)"
+                            fontSize="25px"
+                            fontWeight="700"
+                            _hover={{
+                                bgColor: "#A6324F",
+                                borderColor: "#A6324F"
+                            }}
+                        >
+                            Finalizar Pedido
+                        </Button>
+                    </ButtonContainer>
+                )}
             </PedidosMain>
         </PedidosBG>
     )

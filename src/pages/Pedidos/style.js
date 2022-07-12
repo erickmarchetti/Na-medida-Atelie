@@ -24,20 +24,28 @@ export const PedidosMain = styled.main`
 
 export const PedidosContainer = styled.div`
     display: flex;
+    flex-direction: column;
+
     justify-content: space-between;
+    gap: 15px;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
 `
 
 export const PedidosCard = styled.div`
     border: 2px solid #181818;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 30%;
+    min-height: 370px;
     border-radius: 10px;
     justify-content: space-between;
     height: 65vh;
-    gap: 23px;
+    gap: 5px;
 
     h2 {
         font-weight: 700;
@@ -48,9 +56,11 @@ export const PedidosCard = styled.div`
 
 export const FormSection = styled.div`
     display: flex;
+
     flex-direction: ${(props) =>
         props.direction === "column" ? "column" : "row"};
     width: 100%;
+
     justify-content: space-between;
     align-items: ${(props) => (props.type === "medidas" ? "center" : "unset")};
     flex: ${(props) => props.flex || "unset"};
@@ -61,7 +71,7 @@ export const FormSection = styled.div`
     }
     label {
         font-weight: 700;
-        font-size: 15px;
+        font-size: 13px;
         min-width: fit-content;
         display: flex;
         align-items: center;
@@ -70,5 +80,9 @@ export const FormSection = styled.div`
 
 export const ButtonContainer = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        justify-content: space-between;
+    }
 `
