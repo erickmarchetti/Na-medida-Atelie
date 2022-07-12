@@ -13,7 +13,6 @@ import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
 function ThemeHeader({ admin }) {
-
     const { pegarDadosUser, user } = useContext(UserContext)
 
     const history = useHistory()
@@ -40,29 +39,7 @@ function ThemeHeader({ admin }) {
                     onClick={() => history.push("/")}
                 />
 
-                {!!user && (
-                    <Flex
-                        h="full"
-                        flexFlow="row nowrap"
-                        alignItems="center"
-                        gap="9px"
-                    >
-                        <span>{user?.name?.split(" ")[0]}</span>
-
-                        <span className="restoNome">
-                            {user?.name?.split(" ")?.slice(1)?.join(" ")}
-                        </span>
-
-                        <Image
-                            src={user?.avatar !== "" ? user.avatar : semImagem}
-                            w={{ base: "30px", sm: "50px" }}
-                            h={{ base: "30px", sm: "50px" }}
-                            objectFit="cover"
-                            borderRadius="100%"
-                        />
-                    </Flex>
-                )}
-                {!!admin && (
+                {!!admin ? (
                     <Flex
                         h="full"
                         flexFlow="row nowrap"
@@ -79,6 +56,33 @@ function ThemeHeader({ admin }) {
                             borderRadius="100%"
                         />
                     </Flex>
+                ) : (
+                    !!user && (
+                        <Flex
+                            h="full"
+                            flexFlow="row nowrap"
+                            alignItems="center"
+                            gap="9px"
+                        >
+                            <span>{user?.name?.split(" ")[0]}</span>
+
+                            <span className="restoNome">
+                                {user?.name?.split(" ")?.slice(1)?.join(" ")}
+                            </span>
+
+                            <Image
+                                src={
+                                    user?.avatar !== ""
+                                        ? user.avatar
+                                        : semImagem
+                                }
+                                w={{ base: "30px", sm: "50px" }}
+                                h={{ base: "30px", sm: "50px" }}
+                                objectFit="cover"
+                                borderRadius="100%"
+                            />
+                        </Flex>
+                    )
                 )}
             </Flex>
         </StyledHeader>
