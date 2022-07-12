@@ -188,9 +188,10 @@ export const ImgLogo = styled.img`
     justify-self: flex-start;
     margin: 0.5rem 3rem;
     align-self: center;
-
+    transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     :hover {
-        border-bottom: dashed 2px #d94167;
+        transform: scale(1.1);
+        transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     }
 
     @media (min-width: 1024px) {
