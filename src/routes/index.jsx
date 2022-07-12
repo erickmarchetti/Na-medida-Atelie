@@ -1,4 +1,4 @@
-import { Switch, Route, useHistory } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import Home from "../pages/Home"
 import Cadastrar from "../pages/Cadastrar"
 import Login from "../pages/Login"
@@ -8,8 +8,6 @@ import Pedidos from "../pages/Pedidos"
 import Avaliacoes from "../pages/Avaliacoes"
 
 function Routes() {
-    const history = useHistory()
-
     return (
         <Switch>
             <Route exact path="/">

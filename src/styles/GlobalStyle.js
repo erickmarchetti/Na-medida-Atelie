@@ -33,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
 
         --Title-Header: #D70402;
 
+        --Green: #3CB371;
+
 
         --Grey-0: #F7F7F7;
         --Grey-1: #EAEAEA;
