@@ -13,6 +13,7 @@ import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
 function ThemeHeader({ admin }) {
+
     const { pegarDadosUser, user } = useContext(UserContext)
 
     const history = useHistory()
