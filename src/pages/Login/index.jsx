@@ -6,8 +6,7 @@ import {
     IconButton,
     Input,
     InputGroup,
-    InputRightElement,
-    Stack
+    InputRightElement
 } from "@chakra-ui/react"
 import Api from "../../Api"
 import * as yup from "yup"
@@ -19,7 +18,7 @@ import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, ImgLogo } from "./style"
 import { toast } from "react-toastify"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 export default function Login() {
     const [show, setShow] = useState(false)

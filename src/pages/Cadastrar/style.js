@@ -7,11 +7,10 @@ export const ImgLogo = styled.img`
     margin: 0.5rem 3rem;
     align-self: center;
     cursor: pointer;
+    transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     :hover {
-        border-bottom: dashed 2px coral;
-    }
-    :active {
-        background-color: #d94167;
+        transform: scale(1.1);
+        transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     }
 
     @media (min-width: 1024px) {
@@ -22,7 +21,6 @@ export const DivContainerCadastro = styled.div`
     .botaoLogin {
         :hover {
             cursor: pointer;
-            border-bottom: dashed 2px coral;
         }
     }
 `

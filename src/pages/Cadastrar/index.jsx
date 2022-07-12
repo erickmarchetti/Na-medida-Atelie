@@ -101,7 +101,6 @@ export default function Cadastro() {
             <Stack
                 direction="row"
                 width="100%"
-                border={{ lg: "solid 1px var(--Black)" }}
                 bg={
                     "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
                 }
@@ -119,11 +118,12 @@ export default function Cadastro() {
                 </Box>
 
                 <Flex
-                    flexDirection={{ base: "column", lg: "reverse" }}
+                    flexDirection={{ base: "column", lg: "row-reverse" }}
                     alignItems={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
-                    marginRight="4rem"
-                    max-height="100vh"
+                    style={{
+                        margin: "0"
+                    }}
                     gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
                 >
@@ -148,7 +148,7 @@ export default function Cadastro() {
                             display: "flex",
                             flexDirection: "column",
                             alignSelf: "center",
-                            p: ".2rem 2rem"
+                            p: ".5rem 2rem"
                         }}
                     >
                         <Heading textAlign="center">Cadastro</Heading>

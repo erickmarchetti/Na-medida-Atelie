@@ -12,10 +12,10 @@ import {
     ItemImg,
     ItemStatus,
     ListaPedidos,
-    UsuarioBG,
-    UsuarioMain
+    UsuarioBG
+    // UsuarioMain
 } from "./style"
-import bgImg from "../../assets/Images/custommadework.svg"
+// import bgImg from "../../assets/Images/custommadework.svg"
 import teste from "../../assets/Images/custommadewoman.png"
 
 function PainelUsuario() {
@@ -27,9 +27,9 @@ function PainelUsuario() {
                     <ContainerButton>
                         <Button
                             variant="outline"
-                            borderColor="#DA4167"
-                            color="#E7E7E7"
-                            bg="#DA4167"
+                            borderColor="var(--Color-Primary-Main)"
+                            color="var(--White)"
+                            bg="var(--Color-Primary-Main)"
                             boxShadow="dark-lg"
                             fontSize="30px"
                             w="320px"
@@ -37,8 +37,8 @@ function PainelUsuario() {
                             fontWeight="700"
                             _active={false}
                             _hover={{
-                                bgColor: "#A6324F",
-                                borderColor: "#A6324F"
+                                bgColor: "var(--Color-Primary-Dark)",
+                                borderColor: "var(--Color-Primary-Dark)"
                             }}
                         >
                             Fazer pedido
