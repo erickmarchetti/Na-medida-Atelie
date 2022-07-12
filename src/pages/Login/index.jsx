@@ -60,7 +60,9 @@ export default function Login() {
                 window.localStorage.setItem("@user/token", res.data.accessToken)
                 window.localStorage.setItem("@user/id", res.data.user.id)
 
-                history.push("/painel")
+                res.data.user.isAdmin
+                    ? history.push("/admin")
+                    : history.push("/painel")
             })
             .catch(() => {
                 toast.error("Credencias inválidas")
