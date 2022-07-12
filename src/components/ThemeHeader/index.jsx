@@ -1,20 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Flex, Image } from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
+
 import semImagem from "../../assets/Images/no-image.svg"
 
 import { StyledHeader } from "./style.js"
+
+import { useHistory } from "react-router-dom"
 
 import { useContext } from "react"
 import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
-import { useHistory } from "react-router-dom"
-
-function ThemeHeader() {
-    const history = useHistory()
+function ThemeHeader({ admin }) {
 
     const { pegarDadosUser, user } = useContext(UserContext)
+
+    const history = useHistory()
 
     useEffect(() => {
         pegarDadosUser()
@@ -53,6 +55,24 @@ function ThemeHeader() {
 
                         <Image
                             src={user?.avatar !== "" ? user.avatar : semImagem}
+                            w={{ base: "30px", sm: "50px" }}
+                            h={{ base: "30px", sm: "50px" }}
+                            objectFit="cover"
+                            borderRadius="100%"
+                        />
+                    </Flex>
+                )}
+                {!!admin && (
+                    <Flex
+                        h="full"
+                        flexFlow="row nowrap"
+                        alignItems="center"
+                        gap="9px"
+                    >
+                        <span>Admin</span>
+
+                        <Image
+                            src={semImagem}
                             w={{ base: "30px", sm: "50px" }}
                             h={{ base: "30px", sm: "50px" }}
                             objectFit="cover"

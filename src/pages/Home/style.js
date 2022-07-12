@@ -39,7 +39,8 @@ export const HomeMain = styled.main`
 `
 
 export const HomeContainer = styled.div`
-    height: calc(100vh - 50px);
+    height: ${(props) =>
+        props.desktop ? "calc(100vh - 50px)" : "calc(110vh - 50px)"};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,15 +50,14 @@ export const HomeContainer = styled.div`
     @media (min-width: 768px) {
         align-items: unset;
         min-width: 365px;
-        height: 90vh;
-        width: 40vw;
+        height: 87vh;
+        width: 60%;
     }
 `
 export const ContainerText = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
     text-align: center;
     height: 100%;
 
@@ -78,16 +78,19 @@ export const ContainerText = styled.div`
 
     @media (min-width: 768px) {
         text-align: left;
-        padding: 80px 0;
+        padding: 1.5rem 0;
         justify-content: space-between;
-
+        max-height: 50rem;
         h1 {
-            font-size: 50px;
+            font-size: 4vw;
         }
 
         h2 {
             font-size: 40px;
         }
+    }
+    @media (min-width: 1920px) {
+        font-size: 5.5rem;
     }
 `
 export const ContainerText1280 = styled.div``
@@ -104,7 +107,7 @@ export const ImgContainer = styled.div`
         justify-content: unset;
 
         img {
-            height: 250px;
+            width: 27rem;
         }
     }
 `
@@ -115,7 +118,7 @@ export const BackgroundImage = styled.div`
     position: relative;
     right: 0;
     top: -10vh;
-    width: 40vw;
+    width: 40%;
     height: 100vh;
     z-index: -1;
     display: none;
