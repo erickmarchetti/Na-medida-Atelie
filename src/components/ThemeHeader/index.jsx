@@ -9,7 +9,11 @@ import { useContext } from "react"
 import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
+import { useHistory } from "react-router-dom"
+
 function ThemeHeader() {
+    const history = useHistory()
+
     const { pegarDadosUser, user } = useContext(UserContext)
 
     useEffect(() => {
@@ -31,7 +35,7 @@ function ThemeHeader() {
                     alt="Na medida ateliê"
                     w={{ base: "78.55px", sm: "126.75px" }}
                     h={{ base: "38.88", sm: "52.08px" }}
-                    onClick={() => window.location.reload()}
+                    onClick={() => history.push("/")}
                 />
 
                 {!!user && (
