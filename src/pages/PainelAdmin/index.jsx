@@ -9,63 +9,39 @@ import {
     useDisclosure
 } from "@chakra-ui/react"
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
+import { useEffect, useState } from "react"
+import Api from "../../Api"
 
 function PainelAdmin() {
+    const [pedidos, setPedidos] = useState(null)
+
+    const [pagina, setPagina] = useState(1)
+
+    const [pedidoAtual, setPedidoAtual] = useState(null)
+    console.log("oi")
+    useEffect(() => {
+        Api.get(`/pedidos?_page=${pagina}&_limit=6&_expand=user`, {
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                    "@user/token"
+                )}`
+            }
+        }).then((response) => {
+            setPedidos(response.data)
+        })
+    }, [pagina])
+
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const property = [
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "Em andamento"
-        },
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "Em andamento"
-        },
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "Em andamento"
-        },
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "Em andamento"
-        },
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "Em andamento"
-        },
-        {
-            imageUrl: "https://bit.ly/2Z4KKcF",
-            imageAlt: "Rear view of modern home with pool",
-            title: "vestido",
-            data: "20/08/22",
-            formattedPrice: "R$150,00",
-            status: "novo"
-        }
-    ]
+
     return (
         <>
             <ThemeHeader />
-            <ModalMedidas isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+            <ModalMedidas
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                pedidoAtual={pedidoAtual}
+            />
             <>
                 <>
                     <Text
@@ -82,9 +58,12 @@ function PainelAdmin() {
                     flexWrap="wrap"
                     justifyContent="space-around"
                 >
-                    {property.map((item, index) => (
+                    {pedidos?.map((item, index) => (
                         <Box
-                            onClick={onOpen}
+                            onClick={(e) => {
+                                onOpen(e)
+                                setPedidoAtual(item)
+                            }}
                             cursor="pointer"
                             key={index}
                             yardisplay="flex"
@@ -101,8 +80,8 @@ function PainelAdmin() {
                             <Image
                                 w="50%"
                                 h="100%"
-                                src={item.imageUrl}
-                                alt={item.imageAlt}
+                                src={item.imagem_referencia}
+                                alt={item.imagem_referencia}
                             />
 
                             <Box
@@ -126,7 +105,7 @@ function PainelAdmin() {
                                         fontSize="30px"
                                         color="#181818"
                                     >
-                                        {item.title}
+                                        {item.categoria}
                                     </Box>
                                     <Box display="flex">
                                         <Box
@@ -153,7 +132,10 @@ function PainelAdmin() {
                                         fontWeight="bold"
                                         fontSize="18px"
                                     >
-                                        {item.formattedPrice}
+                                        {item.preco.toLocaleString("pt-br", {
+                                            style: "currency",
+                                            currency: "BRL"
+                                        })}
                                     </Box>
                                     <Badge
                                         margin="10px"
@@ -163,7 +145,7 @@ function PainelAdmin() {
                                     >
                                         status
                                     </Badge>
-                                    {item.status === "novo" ? (
+                                    {item.stats === "Em Análise" ? (
                                         <Button
                                             color="#E7E7E7"
                                             bg="#DA4167"
@@ -182,7 +164,7 @@ function PainelAdmin() {
                                             textTransform="uppercase"
                                             ml="2"
                                         >
-                                            {item.status}
+                                            {item.stats}
                                         </Box>
                                     )}
                                 </Box>
@@ -193,12 +175,15 @@ function PainelAdmin() {
             </>
             <Box display="flex" justifyContent="flex-end">
                 <button
-                    className="proximo"
-                    onClick={() => console.log("deu tambem")}
+                    className="anterior"
+                    onClick={() => setPagina(pagina - 1 > 0 && pagina - 1)}
                 >
                     <AiOutlineArrowLeft font-size="30px" />
                 </button>
-                <button className="anterior" onClick={() => console.log("deu")}>
+                <button
+                    className="proximo"
+                    onClick={() => setPagina(pagina + 1)}
+                >
                     <AiOutlineArrowRight font-size="30px" />
                 </button>
             </Box>
