@@ -11,7 +11,6 @@ import {
     IconButton
 } from "@chakra-ui/react"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-
 function PainelAdmin() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const property = [
@@ -90,7 +89,7 @@ function PainelAdmin() {
                     justifyContent={{ base: "flex-start", lg: "center" }}
                     margin="auto"
                     maxW={{ lg: "1280px" }}
-                    w={{ base: "84%", lg: "95%" }}
+                    w="95%"
                 >
                     {property.map((item, index) => (
                         <Box
