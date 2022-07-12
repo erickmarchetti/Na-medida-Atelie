@@ -178,7 +178,7 @@ function PainelAdmin() {
                                         lineHeight="25px"
                                         marginBottom=".5rem"
                                     >
-                                        {item.status}
+                                        {item.stats}
                                     </Badge>
                                 )}
                             </Box>
