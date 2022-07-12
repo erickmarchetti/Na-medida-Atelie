@@ -5,6 +5,7 @@ import Login from "../pages/Login"
 import PainelAdmin from "../pages/PainelAdmin"
 import PainelUsuario from "../pages/PainelUsuario"
 import Pedidos from "../pages/Pedidos"
+import Avaliacoes from "../pages/Avaliacoes"
 
 function Routes() {
     const history = useHistory()
@@ -27,7 +28,7 @@ function Routes() {
                 <Pedidos />
             </Route>
             <Route exact path="/avaliacoes">
-                Avaliações
+                <Avaliacoes />
             </Route>
             <Route exact path="/admin">
                 <PainelAdmin />
