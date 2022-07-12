@@ -24,8 +24,14 @@ export const PedidosMain = styled.main`
 
 export const PedidosContainer = styled.div`
     display: flex;
+    flex-direction: column;
+
     justify-content: space-between;
     gap: 15px;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
 `
 
 export const PedidosCard = styled.div`
@@ -74,6 +80,9 @@ export const FormSection = styled.div`
 
 export const ButtonContainer = styled.div`
     display: flex;
+    justify-content: center;
 
-    justify-content: space-between;
+    @media (min-width: 768px) {
+        justify-content: space-between;
+    }
 `

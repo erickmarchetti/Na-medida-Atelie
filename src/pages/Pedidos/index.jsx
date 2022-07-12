@@ -5,7 +5,8 @@ import {
     Input,
     InputGroup,
     Select,
-    InputRightAddon
+    InputRightAddon,
+    useMediaQuery
 } from "@chakra-ui/react"
 import {
     ButtonContainer,
@@ -17,28 +18,33 @@ import {
 } from "./style"
 
 function Pedidos() {
+    const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+
     return (
         <PedidosBG>
             <ThemeHeader />
             <PedidosMain>
-                <ButtonContainer>
+                {!isLargerThan768 ? (
                     <h1>Novo pedido</h1>
-                    <Button
-                        w="280px"
-                        h="70px"
-                        bg="var(--Color-Primary-Main)"
-                        color="var(--White)"
-                        fontSize="25px"
-                        fontWeight="700"
-                        _hover={{
-                            bgColor: "#A6324F",
-                            borderColor: "#A6324F"
-                        }}
-                    >
-                        Finalizar Pedido
-                    </Button>
-                </ButtonContainer>
-
+                ) : (
+                    <ButtonContainer>
+                        <h1>Novo pedido</h1>
+                        <Button
+                            w="280px"
+                            h="70px"
+                            bg="var(--Color-Primary-Main)"
+                            color="var(--White)"
+                            fontSize="25px"
+                            fontWeight="700"
+                            _hover={{
+                                bgColor: "#A6324F",
+                                borderColor: "#A6324F"
+                            }}
+                        >
+                            Finalizar Pedido
+                        </Button>
+                    </ButtonContainer>
+                )}
                 <PedidosContainer>
                     <PedidosCard>
                         <h2>Peça</h2>
@@ -455,6 +461,24 @@ function Pedidos() {
                         </FormSection>
                     </PedidosCard>
                 </PedidosContainer>
+                {!isLargerThan768 && (
+                    <ButtonContainer>
+                        <Button
+                            w="280px"
+                            h="70px"
+                            bg="var(--Color-Primary-Main)"
+                            color="var(--White)"
+                            fontSize="25px"
+                            fontWeight="700"
+                            _hover={{
+                                bgColor: "#A6324F",
+                                borderColor: "#A6324F"
+                            }}
+                        >
+                            Finalizar Pedido
+                        </Button>
+                    </ButtonContainer>
+                )}
             </PedidosMain>
         </PedidosBG>
     )
