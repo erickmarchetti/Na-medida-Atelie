@@ -7,7 +7,7 @@ export const PedidosBG = styled.div`
     align-items: center;
 `
 
-export const PedidosMain = styled.main`
+export const PedidosMain = styled.form`
     padding: 17px 25px;
     display: flex;
     flex-direction: column;
