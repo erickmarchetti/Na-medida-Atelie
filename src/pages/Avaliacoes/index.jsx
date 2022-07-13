@@ -43,22 +43,26 @@ function Avaliacoes() {
             <StyledAvaliacoes>
                 <Flex
                     backgroundImage={bg}
+                    backgroundSize="cover"
+                    backgroundPosition="center"
                     w="100%"
-                    h="304px"
+                    h="45vh"
                     objectFit="fill"
                     justifyContent="center"
-                    p="27px 0 0 0"
+                    display="flex"
+                    alignItems="center"
                 >
                     <h1>Opiniões dos nossos clientes</h1>
                 </Flex>
 
-                <Flex h="392px" justifyContent="center" alignItems="center">
+                <Flex h="432px" justifyContent="center" alignItems="center">
                     <List
-                        p="50px 0 0 0"
-                        w="84.6875vw"
-                        h="fit-content"
+                        p="50px 5vw 20px 5vw"
+                        minW="100vw"
+                        maxW="1280px"
+                        h="100%"
                         display="flex"
-                        flexFlow="row nowrap"
+                        flexFlow="row"
                         overflowX="scroll"
                         gap="20px"
                     >
