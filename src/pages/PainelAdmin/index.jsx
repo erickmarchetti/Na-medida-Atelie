@@ -68,151 +68,140 @@ function PainelAdmin() {
                 w="95%"
             >
                 {pedidos?.map((item, index) => (
-                    <>
+                    <Box
+                        onClick={(e) => {
+                            onOpen(e)
+                            setPedidoAtual(item)
+                        }}
+                        cursor="pointer"
+                        key={index}
+                        height={{ base: "auto", lg: "178px" }}
+                        maxWidth={{ lg: "375px" }}
+                        minWidth={{ base: "240px", lg: "350px" }}
+                        background="var(--BackgroundColor-Main)"
+                        border="2px solid var(--Black)"
+                        borderRadius="25px"
+                        overflow="hidden"
+                        display="flex"
+                        alignItems="center"
+                        margin={{ base: "15px", lg: "25px" }}
+                        flexDirection={{ base: "column", lg: "row" }}
+                    >
+                        <Image
+                            w={{ base: "100%", lg: "50%" }}
+                            h="100%"
+                            src={item.imagem_referencia}
+                            alt={item.imagem_referencia}
+                        />
+
                         <Box
-                            onClick={(e) => {
-                                onOpen(e)
-                                setPedidoAtual(item)
-                            }}
-                            cursor="pointer"
-                            key={index}
-                            height={{ base: "auto", lg: "178px" }}
-                            maxWidth={{ lg: "375px" }}
-                            minWidth={{ base: "240px", lg: "350px" }}
-                            background="var(--BackgroundColor-Main)"
-                            border="2px solid var(--Black)"
-                            borderRadius="25px"
-                            overflow="hidden"
                             display="flex"
+                            maxW="50%"
+                            gap="5px"
+                            flexDirection="column"
+                            paddingLeft={{ base: 0, lg: "35px" }}
                             alignItems="center"
-                            margin={{ base: "15px", lg: "25px" }}
-                            flexDirection={{ base: "column", lg: "row" }}
+                            textAlign="center"
                         >
-                            <Image
-                                w={{ base: "100%", lg: "50%" }}
-                                h="100%"
-                                src={item.imagem_referencia}
-                                alt={item.imagem_referencia}
-                                // <a
-                                //         cursor="pointer"
-                                //         fontWeight="bold"
-                                //         href={pedidoAtual.imagem_referencia}
-                                //         target="_blank"
-                                //     >
-                                //         imagem referencia
-                                //     </a>
-                            />
-
-                            <Box
-                                display="flex"
-                                maxW="50%"
-                                gap="5px"
-                                flexDirection="column"
-                                paddingLeft={{ base: 0, lg: "35px" }}
-                                alignItems="center"
-                                textAlign="center"
+                            <Text
+                                mt="1"
+                                fontWeight="bold"
+                                as="h4"
+                                lineHeight="tight"
+                                noOfLines={1}
+                                fontSize="30px"
+                                color="var(--Black)"
+                                fontFamily="Nunito"
                             >
-                                <Text
-                                    mt="1"
-                                    fontWeight="bold"
-                                    as="h4"
-                                    lineHeight="tight"
-                                    noOfLines={1}
-                                    fontSize="30px"
-                                    color="var(--Black)"
-                                    fontFamily="Nunito"
-                                >
-                                    {item.categoria}
-                                </Text>
-                                <Text
-                                    color="var(--Black)"
-                                    fontWeight="bold"
-                                    fontSize="18px"
-                                    marginLeft="5px"
-                                    fontFamily="Nunito"
-                                >
-                                    Data:
-                                </Text>
+                                {item.categoria}
+                            </Text>
+                            <Text
+                                color="var(--Black)"
+                                fontWeight="bold"
+                                fontSize="18px"
+                                marginLeft="5px"
+                                fontFamily="Nunito"
+                            >
+                                Data:
+                            </Text>
 
-                                <Text
-                                    color="var(--Grey-3)"
-                                    fontWeight="bold"
-                                    fontSize="18px"
-                                    marginLeft="5px"
-                                    fontFamily="Nunito"
-                                >
-                                    {item.data}
-                                </Text>
+                            <Text
+                                color="var(--Grey-3)"
+                                fontWeight="bold"
+                                fontSize="18px"
+                                marginLeft="5px"
+                                fontFamily="Nunito"
+                            >
+                                {item.data}
+                            </Text>
 
-                                <Text
-                                    color="var(--Green)"
-                                    fontWeight="bold"
-                                    fontSize="18px"
+                            <Text
+                                color="var(--Green)"
+                                fontWeight="bold"
+                                fontSize="18px"
+                                fontFamily="Nunito"
+                            >
+                                {item.preco.toLocaleString("pt-br", {
+                                    style: "currency",
+                                    currency: "BRL"
+                                })}
+                            </Text>
+                            {item.stats === "Em Análise" ? (
+                                <Button
+                                    color="var(--White)"
+                                    bg="var(--Color-Primary-Main)"
+                                    w="110px"
+                                    h="25px"
+                                    borderRadius="lg"
                                     fontFamily="Nunito"
+                                    lineHeight="25px"
+                                    marginBottom=".5rem"
                                 >
-                                    {item.preco.toLocaleString("pt-br", {
-                                        style: "currency",
-                                        currency: "BRL"
-                                    })}
-                                </Text>
-                                {item.stats === "Em Análise" ? (
-                                    <Button
-                                        color="var(--White)"
-                                        bg="var(--Color-Primary-Main)"
-                                        w="110px"
-                                        h="25px"
-                                        borderRadius="lg"
-                                        fontFamily="Nunito"
-                                        lineHeight="25px"
-                                        marginBottom=".5rem"
-                                    >
-                                        Aceitar
-                                    </Button>
-                                ) : (
-                                    <Badge
-                                        height="25px"
-                                        borderRadius="lg"
-                                        px="2"
-                                        colorScheme="teal"
-                                        fontFamily="Nunito"
-                                        lineHeight="25px"
-                                        marginBottom=".5rem"
-                                    >
-                                        {item.stats}
-                                    </Badge>
-                                )}
-                            </Box>
+                                    Aceitar
+                                </Button>
+                            ) : (
+                                <Badge
+                                    height="25px"
+                                    borderRadius="lg"
+                                    px="2"
+                                    colorScheme="teal"
+                                    fontFamily="Nunito"
+                                    lineHeight="25px"
+                                    marginBottom=".5rem"
+                                >
+                                    {item.stats}
+                                </Badge>
+                            )}
                         </Box>
-                    </>
+                    </Box>
                 ))}
-
-                <Stack
-                    display={{ base: "none", lg: "flex" }}
-                    maxWidth="1280px"
-                    margin="auto"
-                    direction="row"
-                    spacing={7}
-                    paddingX={12}
-                    justifyContent="flex-end"
-                >
-                    <IconButton
-                        icon={<FaArrowLeft />}
-                        size="lg"
-                        fontSize="25px"
-                        className="proximo"
-                        aria-label="seta para esquerda"
-                        onClick={() => setPagina(pagina - 1 > 0 && pagina - 1)}
-                    />
-                    <IconButton
-                        icon={<FaArrowRight />}
-                        size="lg"
-                        fontSize="25px"
-                        className="proximo"
-                        aria-label="seta para direita"
-                        onClick={() => setPagina(pagina + 1)}
-                    />
-                </Stack>
             </Box>
+            <Stack
+                display={{ base: "none", lg: "flex" }}
+                maxWidth="1280px"
+                margin="auto"
+                direction="row"
+                spacing={7}
+                paddingX={12}
+                justifyContent="flex-end"
+            >
+                <IconButton
+                    icon={<FaArrowLeft />}
+                    size="lg"
+                    fontSize="25px"
+                    className="proximo"
+                    aria-label="seta para esquerda"
+                    onClick={() => setPagina(pagina - 1 > 0 && pagina - 1)}
+                />
+                <IconButton
+                    icon={<FaArrowRight />}
+                    size="lg"
+                    fontSize="25px"
+                    className="proximo"
+                    aria-label="seta para direita"
+                    onClick={() => setPagina(pagina + 1)}
+                />
+            </Stack>
         </>
     )
 }

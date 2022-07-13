@@ -64,7 +64,7 @@ function PainelUsuario() {
 
     return (
         <UsuarioBG>
-            <ThemeHeader />
+            <ThemeHeader usuarioLogado />
             <ContainerMain>
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
