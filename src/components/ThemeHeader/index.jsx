@@ -1,5 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Flex, Image } from "@chakra-ui/react"
+import {
+    Flex,
+    Image,
+    Popover,
+    PopoverTrigger,
+    Button,
+    Portal,
+    PopoverContent,
+    PopoverArrow,
+    PopoverBody,
+    IconButton
+} from "@chakra-ui/react"
 import logo from "../../assets/Images/logo.svg"
 
 import semImagem from "../../assets/Images/no-image.svg"
@@ -11,15 +22,23 @@ import { useHistory } from "react-router-dom"
 import { useContext } from "react"
 import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
+import { toast } from "react-toastify"
 
-function ThemeHeader({ admin }) {
-    const { pegarDadosUser, user } = useContext(UserContext)
+function ThemeHeader({ admin, usuarioLogado }) {
+    const { pegarDadosUser, user, setUser } = useContext(UserContext)
 
     const history = useHistory()
 
     useEffect(() => {
         pegarDadosUser()
     }, [])
+
+    const logout = () => {
+        localStorage.clear()
+        setUser(null)
+        toast.info("Até logo! 👋")
+        setTimeout(() => history.push("/"), 3100)
+    }
 
     return (
         <StyledHeader>
@@ -78,18 +97,47 @@ function ThemeHeader({ admin }) {
                             <span className="restoNome">
                                 {user?.name?.split(" ")?.slice(1)?.join(" ")}
                             </span>
-
-                            <Image
-                                src={
-                                    user?.avatar !== ""
-                                        ? user.avatar
-                                        : semImagem
-                                }
-                                w={{ base: "30px", sm: "50px" }}
-                                h={{ base: "30px", sm: "50px" }}
-                                objectFit="cover"
-                                borderRadius="100%"
-                            />
+                            <Popover>
+                                <PopoverTrigger>
+                                    <IconButton
+                                        _hover={false}
+                                        bg="transparent"
+                                        _active={false}
+                                    >
+                                        <Image
+                                            src={
+                                                user?.avatar !== ""
+                                                    ? user.avatar
+                                                    : semImagem
+                                            }
+                                            w={{ base: "30px", sm: "50px" }}
+                                            h={{ base: "30px", sm: "50px" }}
+                                            objectFit="cover"
+                                            borderRadius="100%"
+                                        />
+                                    </IconButton>
+                                </PopoverTrigger>
+                                <Portal>
+                                    <PopoverContent width="fit-content">
+                                        <PopoverArrow />
+                                        <PopoverBody>
+                                            <Button
+                                                _active={false}
+                                                sx={{
+                                                    bg: "var(--Red)",
+                                                    color: "var(--White)",
+                                                    "&:hover": {
+                                                        bg: "var(--Color-Primary-Dark)"
+                                                    }
+                                                }}
+                                                onClick={logout}
+                                            >
+                                                Sair
+                                            </Button>
+                                        </PopoverBody>
+                                    </PopoverContent>
+                                </Portal>
+                            </Popover>
                         </Flex>
                     )
                 )}
