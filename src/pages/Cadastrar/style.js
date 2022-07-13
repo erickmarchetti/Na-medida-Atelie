@@ -14,7 +14,7 @@ export const ImgLogo = styled.img`
     }
 
     @media (min-width: 1024px) {
-        align-self: flex-start;
+        align-self: flex-end;
     }
 `
 export const DivContainerCadastro = styled.div`
