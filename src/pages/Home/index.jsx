@@ -32,63 +32,67 @@ function Home() {
     }, [])
 
     return (
-        <HomeBG>
-            {isLargerThan768 && (
-                <ButtonContainer>
-                    {!sobreNos && (
-                        <LoginButtonDesktop
-                            push={history.push}
-                        ></LoginButtonDesktop>
-                    )}
-                    {!sobreNos && (
-                        <CadastroButtonDesktop
-                            push={history.push}
-                        ></CadastroButtonDesktop>
-                    )}
-                    <SobreNosButtonDesktop
-                        sobreNos={sobreNos}
-                        setSobreNos={setSobreNos}
-                    ></SobreNosButtonDesktop>
-                </ButtonContainer>
-            )}
-            <HomeMain>
-                <HomeContainer>
-                    {sobreNos ? (
-                        <SobreNosContainer />
-                    ) : (
-                        <MainContainer
-                            isLargerThan768={isLargerThan768}
-                            push={history.push}
-                        ></MainContainer>
-                    )}
-
-                    {!isLargerThan768 && !sobreNos && (
+        <>
+            {!pegarToken() && (
+                <HomeBG>
+                    {isLargerThan768 && (
                         <ButtonContainer>
-                            <LoginButtonMobile
-                                push={history.push}
-                            ></LoginButtonMobile>
-                            <CadastroButtonMobile
-                                push={history.push}
-                            ></CadastroButtonMobile>
-                        </ButtonContainer>
-                    )}
-                    {!isLargerThan768 && (
-                        <>
                             {!sobreNos && (
-                                <FeedbackButtonMobile
+                                <LoginButtonDesktop
                                     push={history.push}
-                                ></FeedbackButtonMobile>
+                                ></LoginButtonDesktop>
                             )}
-                            <SobreNosButtonMobile
+                            {!sobreNos && (
+                                <CadastroButtonDesktop
+                                    push={history.push}
+                                ></CadastroButtonDesktop>
+                            )}
+                            <SobreNosButtonDesktop
                                 sobreNos={sobreNos}
                                 setSobreNos={setSobreNos}
-                            ></SobreNosButtonMobile>
-                        </>
+                            ></SobreNosButtonDesktop>
+                        </ButtonContainer>
                     )}
-                </HomeContainer>
-                {isLargerThan768 && <BackgroundImage />}
-            </HomeMain>
-        </HomeBG>
+                    <HomeMain>
+                        <HomeContainer>
+                            {sobreNos ? (
+                                <SobreNosContainer />
+                            ) : (
+                                <MainContainer
+                                    isLargerThan768={isLargerThan768}
+                                    push={history.push}
+                                ></MainContainer>
+                            )}
+
+                            {!isLargerThan768 && !sobreNos && (
+                                <ButtonContainer>
+                                    <LoginButtonMobile
+                                        push={history.push}
+                                    ></LoginButtonMobile>
+                                    <CadastroButtonMobile
+                                        push={history.push}
+                                    ></CadastroButtonMobile>
+                                </ButtonContainer>
+                            )}
+                            {!isLargerThan768 && (
+                                <>
+                                    {!sobreNos && (
+                                        <FeedbackButtonMobile
+                                            push={history.push}
+                                        ></FeedbackButtonMobile>
+                                    )}
+                                    <SobreNosButtonMobile
+                                        sobreNos={sobreNos}
+                                        setSobreNos={setSobreNos}
+                                    ></SobreNosButtonMobile>
+                                </>
+                            )}
+                        </HomeContainer>
+                        {isLargerThan768 && <BackgroundImage />}
+                    </HomeMain>
+                </HomeBG>
+            )}
+        </>
     )
 }
 

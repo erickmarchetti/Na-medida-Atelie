@@ -104,258 +104,275 @@ export default function Cadastro() {
     }, [errors])
 
     return (
-        <DivContainerCadastro>
-            <Stack
-                direction="row"
-                width="100%"
-                bg={
-                    "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
-                }
-            >
-                <Box display={{ base: "none", lg: "block" }} w="40vw">
-                    <img
-                        src={custommadewoman}
-                        alt="custommadewoman"
-                        style={{
-                            height: "100vh",
-                            position: "sticky",
-                            top: 0,
-                            objectFit: "cover"
-                        }}
-                    />
-                </Box>
-
-                <Flex
-                    flexDirection="column"
-                    alignItems={{ base: "center", lg: "flex-end" }}
-                    justifyContent={{ base: "center", lg: "flex-start" }}
-                    style={{
-                        margin: "0"
-                    }}
-                    width={{ base: "100%", lg: "60%" }}
-                >
-                    <ImgLogo
-                        src={logo}
-                        alt="Na Medida Ateliê"
-                        title="Página Inicial"
-                        alignSelf={{ base: "center", lg: "flex-end" }}
-                        onClick={() => history.push("/")}
-                    />
-
+        <>
+            {!pegarToken() && (
+                <DivContainerCadastro>
                     <Stack
-                        as="form"
-                        w={{ base: "90%", md: "50%", lg: "400px" }}
-                        transition="0.3s"
-                        maxH={"100vh"}
-                        onSubmit={handleSubmit(registro)}
-                        sx={{
-                            background: "var(--BackgroundColor-Main)",
-                            border: "2px solid var(--Black)",
-                            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                            borderRadius: "17px",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignSelf: "center",
-                            p: ".5rem 2rem"
-                        }}
+                        direction="row"
+                        width="100%"
+                        bg={
+                            "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
+                        }
                     >
-                        <Heading textAlign="center">Cadastro</Heading>
-                        <FormControl>
-                            <FormLabel htmlFor="name" sx={formErrorLabelStyle}>
-                                Nome
-                            </FormLabel>
-                            <Input
-                                id="name"
-                                placeholder="Nome completo"
-                                borderColor="var(--Grey-4)"
-                                isInvalid={errors.name}
-                                errorBorderColor="red.500"
-                                {...register("name")}
-                            />
-
-                            {errors.name && (
-                                <FormHelperText sx={formErrorStyle}>
-                                    {errors?.name.message}
-                                </FormHelperText>
-                            )}
-                        </FormControl>
-
-                        <FormControl>
-                            <FormLabel sx={formErrorLabelStyle} htmlFor="email">
-                                Email
-                            </FormLabel>
-                            <Input
-                                id="email"
-                                placeholder="email@email.com"
-                                borderColor="var(--Grey-4)"
-                                isInvalid={errors.email}
-                                errorBorderColor="red.500"
-                                {...register("email")}
-                            />
-
-                            {errors.email && (
-                                <FormHelperText sx={formErrorStyle}>
-                                    {errors?.email.message}
-                                </FormHelperText>
-                            )}
-                        </FormControl>
-
-                        <FormControl>
-                            <FormLabel
-                                sx={formErrorLabelStyle}
-                                htmlFor="password"
-                            >
-                                Senha
-                            </FormLabel>
-                            <InputGroup>
-                                <InputRightElement>
-                                    <IconButton
-                                        bg="transparent"
-                                        sx={{
-                                            color: "var(--BackgroundColor-Black)"
-                                        }}
-                                        _hover={false}
-                                        _active={false}
-                                        onClick={handleClick}
-                                        icon={
-                                            show ? (
-                                                <ViewIcon />
-                                            ) : (
-                                                <ViewOffIcon />
-                                            )
-                                        }
-                                    />
-                                </InputRightElement>
-                                <Input
-                                    id="password"
-                                    type={show ? "text" : "password"}
-                                    placeholder="•••••••••••••••••••••"
-                                    borderColor="var(--Grey-4)"
-                                    isInvalid={errors.password}
-                                    errorBorderColor="red.500"
-                                    {...register("password")}
-                                />
-                            </InputGroup>
-
-                            {errors.password && (
-                                <FormHelperText sx={formErrorStyle}>
-                                    {errors?.password.message}
-                                </FormHelperText>
-                            )}
-                        </FormControl>
-
-                        <FormControl>
-                            <FormLabel
-                                sx={formErrorLabelStyle}
-                                htmlFor="passwordConfirm"
-                            >
-                                Confirmar senha
-                            </FormLabel>
-                            <InputGroup>
-                                <InputRightElement>
-                                    <IconButton
-                                        bg="transparent"
-                                        sx={{
-                                            color: "var(--BackgroundColor-Black)"
-                                        }}
-                                        _hover={false}
-                                        _active={false}
-                                        onClick={handleClickb}
-                                        icon={
-                                            showb ? (
-                                                <ViewIcon />
-                                            ) : (
-                                                <ViewOffIcon />
-                                            )
-                                        }
-                                    />
-                                </InputRightElement>
-                                <Input
-                                    id="passwordConfirm"
-                                    type={showb ? "text" : "password"}
-                                    placeholder="•••••••••••••••••••••"
-                                    borderColor="var(--Grey-4)"
-                                    isInvalid={errors.passwordConfirm}
-                                    errorBorderColor="red.500"
-                                    {...register("passwordConfirm")}
-                                />
-                            </InputGroup>
-
-                            {errors.passwordConfirm && (
-                                <FormHelperText sx={formErrorStyle}>
-                                    {errors?.passwordConfirm.message}
-                                </FormHelperText>
-                            )}
-                        </FormControl>
-
-                        <FormControl>
-                            <FormLabel
-                                sx={formErrorLabelStyle}
-                                htmlFor="avatar"
-                            >
-                                Avatar
-                            </FormLabel>
-                            <Input
-                                id="avatar"
-                                placeholder="Url da imagem"
-                                borderColor="var(--Grey-4)"
-                                errorBorderColor="red.500"
-                                {...register("avatar")}
-                            />
-                        </FormControl>
-
-                        {/* Termos de uso e privacidade dados como extra, remova esse comentario apos conclusao */}
-                        <Stack spacing={2} direction="row">
-                            <Checkbox
-                                size="sm"
-                                sx={{
-                                    fontSize: "12px"
+                        <Box display={{ base: "none", lg: "block" }} w="40vw">
+                            <img
+                                src={custommadewoman}
+                                alt="custommadewoman"
+                                style={{
+                                    height: "100vh",
+                                    position: "sticky",
+                                    top: 0,
+                                    objectFit: "cover"
                                 }}
-                                colorScheme="green"
-                                {...register("checkbox")}
-                            >
-                                Li e concordo com os termos de uso e privacidade
-                            </Checkbox>
-                        </Stack>
+                            />
+                        </Box>
 
-                        <Button
-                            isLoading={isLoading}
-                            type="submit"
-                            _active={false}
-                            borderRadius={"10px"}
-                            _hover={{
-                                bg: "var(--Color-Primary-Dark)"
+                        <Flex
+                            flexDirection="column"
+                            alignItems={{ base: "center", lg: "flex-end" }}
+                            justifyContent={{
+                                base: "center",
+                                lg: "flex-start"
                             }}
-                            backgroundColor="var(--Color-Primary-Main)"
-                            sx={{
-                                color: "var(--White)",
-                                fontSize: "20px",
-                                alignSelf: "center",
-                                p: "0 4rem"
+                            style={{
+                                margin: "0"
                             }}
+                            width={{ base: "100%", lg: "60%" }}
                         >
-                            Cadastrar
-                        </Button>
-                        <Text
-                            paddingY={2}
-                            textAlign="center"
-                            fontSize="12px"
-                            fontWeight="bold"
-                        >
-                            Já possui conta? Faça o
-                            <Link
-                                className="botaoLogin"
-                                title="Página de Login"
-                                to="/login"
-                                style={{ color: "var(--Color-Primary-Main)" }}
+                            <ImgLogo
+                                src={logo}
+                                alt="Na Medida Ateliê"
+                                title="Página Inicial"
+                                alignSelf={{ base: "center", lg: "flex-end" }}
+                                onClick={() => history.push("/")}
+                            />
+
+                            <Stack
+                                as="form"
+                                w={{ base: "90%", md: "50%", lg: "400px" }}
+                                transition="0.3s"
+                                maxH={"100vh"}
+                                onSubmit={handleSubmit(registro)}
+                                sx={{
+                                    background: "var(--BackgroundColor-Main)",
+                                    border: "2px solid var(--Black)",
+                                    boxShadow:
+                                        "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                                    borderRadius: "17px",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignSelf: "center",
+                                    p: ".5rem 2rem"
+                                }}
                             >
-                                {" "}
-                                login!
-                            </Link>
-                        </Text>
+                                <Heading textAlign="center">Cadastro</Heading>
+                                <FormControl>
+                                    <FormLabel
+                                        htmlFor="name"
+                                        sx={formErrorLabelStyle}
+                                    >
+                                        Nome
+                                    </FormLabel>
+                                    <Input
+                                        id="name"
+                                        placeholder="Nome completo"
+                                        borderColor="var(--Grey-4)"
+                                        isInvalid={errors.name}
+                                        errorBorderColor="red.500"
+                                        {...register("name")}
+                                    />
+
+                                    {errors.name && (
+                                        <FormHelperText sx={formErrorStyle}>
+                                            {errors?.name.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+
+                                <FormControl>
+                                    <FormLabel
+                                        sx={formErrorLabelStyle}
+                                        htmlFor="email"
+                                    >
+                                        Email
+                                    </FormLabel>
+                                    <Input
+                                        id="email"
+                                        placeholder="email@email.com"
+                                        borderColor="var(--Grey-4)"
+                                        isInvalid={errors.email}
+                                        errorBorderColor="red.500"
+                                        {...register("email")}
+                                    />
+
+                                    {errors.email && (
+                                        <FormHelperText sx={formErrorStyle}>
+                                            {errors?.email.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+
+                                <FormControl>
+                                    <FormLabel
+                                        sx={formErrorLabelStyle}
+                                        htmlFor="password"
+                                    >
+                                        Senha
+                                    </FormLabel>
+                                    <InputGroup>
+                                        <InputRightElement>
+                                            <IconButton
+                                                bg="transparent"
+                                                sx={{
+                                                    color: "var(--BackgroundColor-Black)"
+                                                }}
+                                                _hover={false}
+                                                _active={false}
+                                                onClick={handleClick}
+                                                icon={
+                                                    show ? (
+                                                        <ViewIcon />
+                                                    ) : (
+                                                        <ViewOffIcon />
+                                                    )
+                                                }
+                                            />
+                                        </InputRightElement>
+                                        <Input
+                                            id="password"
+                                            type={show ? "text" : "password"}
+                                            placeholder="•••••••••••••••••••••"
+                                            borderColor="var(--Grey-4)"
+                                            isInvalid={errors.password}
+                                            errorBorderColor="red.500"
+                                            {...register("password")}
+                                        />
+                                    </InputGroup>
+
+                                    {errors.password && (
+                                        <FormHelperText sx={formErrorStyle}>
+                                            {errors?.password.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+
+                                <FormControl>
+                                    <FormLabel
+                                        sx={formErrorLabelStyle}
+                                        htmlFor="passwordConfirm"
+                                    >
+                                        Confirmar senha
+                                    </FormLabel>
+                                    <InputGroup>
+                                        <InputRightElement>
+                                            <IconButton
+                                                bg="transparent"
+                                                sx={{
+                                                    color: "var(--BackgroundColor-Black)"
+                                                }}
+                                                _hover={false}
+                                                _active={false}
+                                                onClick={handleClickb}
+                                                icon={
+                                                    showb ? (
+                                                        <ViewIcon />
+                                                    ) : (
+                                                        <ViewOffIcon />
+                                                    )
+                                                }
+                                            />
+                                        </InputRightElement>
+                                        <Input
+                                            id="passwordConfirm"
+                                            type={showb ? "text" : "password"}
+                                            placeholder="•••••••••••••••••••••"
+                                            borderColor="var(--Grey-4)"
+                                            isInvalid={errors.passwordConfirm}
+                                            errorBorderColor="red.500"
+                                            {...register("passwordConfirm")}
+                                        />
+                                    </InputGroup>
+
+                                    {errors.passwordConfirm && (
+                                        <FormHelperText sx={formErrorStyle}>
+                                            {errors?.passwordConfirm.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+
+                                <FormControl>
+                                    <FormLabel
+                                        sx={formErrorLabelStyle}
+                                        htmlFor="avatar"
+                                    >
+                                        Avatar
+                                    </FormLabel>
+                                    <Input
+                                        id="avatar"
+                                        placeholder="Url da imagem"
+                                        borderColor="var(--Grey-4)"
+                                        errorBorderColor="red.500"
+                                        {...register("avatar")}
+                                    />
+                                </FormControl>
+
+                                {/* Termos de uso e privacidade dados como extra, remova esse comentario apos conclusao */}
+                                <Stack spacing={2} direction="row">
+                                    <Checkbox
+                                        size="sm"
+                                        sx={{
+                                            fontSize: "12px"
+                                        }}
+                                        colorScheme="green"
+                                        {...register("checkbox")}
+                                    >
+                                        Li e concordo com os termos de uso e
+                                        privacidade
+                                    </Checkbox>
+                                </Stack>
+
+                                <Button
+                                    isLoading={isLoading}
+                                    type="submit"
+                                    _active={false}
+                                    borderRadius={"10px"}
+                                    _hover={{
+                                        bg: "var(--Color-Primary-Dark)"
+                                    }}
+                                    backgroundColor="var(--Color-Primary-Main)"
+                                    sx={{
+                                        color: "var(--White)",
+                                        fontSize: "20px",
+                                        alignSelf: "center",
+                                        p: "0 4rem"
+                                    }}
+                                >
+                                    Cadastrar
+                                </Button>
+                                <Text
+                                    paddingY={2}
+                                    textAlign="center"
+                                    fontSize="12px"
+                                    fontWeight="bold"
+                                >
+                                    Já possui conta? Faça o
+                                    <Link
+                                        className="botaoLogin"
+                                        title="Página de Login"
+                                        to="/login"
+                                        style={{
+                                            color: "var(--Color-Primary-Main)"
+                                        }}
+                                    >
+                                        {" "}
+                                        login!
+                                    </Link>
+                                </Text>
+                            </Stack>
+                        </Flex>
                     </Stack>
-                </Flex>
-            </Stack>
-        </DivContainerCadastro>
+                </DivContainerCadastro>
+            )}
+        </>
     )
 }
