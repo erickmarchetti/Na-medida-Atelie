@@ -7,7 +7,7 @@ import {
     HomeMain
 } from "./style"
 import { useHistory } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { LoginButtonDesktop } from "../../components/Home/Desktop/LoginButtonDesktop"
 import { CadastroButtonDesktop } from "../../components/Home/Desktop/CadastroButtonDesktop"
 import { SobreNosButtonDesktop } from "../../components/Home/Desktop/SobreNosButtonDesktop"
@@ -17,11 +17,19 @@ import { LoginButtonMobile } from "../../components/Home/Mobile/LoginButtonMobil
 import { CadastroButtonMobile } from "../../components/Home/Mobile/CadastroButtonMobile"
 import { FeedbackButtonMobile } from "../../components/Home/Mobile/FeedbackButtonMobile"
 import { SobreNosButtonMobile } from "../../components/Home/Mobile/SobreNosButtonMobile"
+import { UserContext } from "../../providers/user"
+import { useEffect } from "react"
 
 function Home() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
     const [sobreNos, setSobreNos] = useState(false)
     const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !!pegarToken() && history.push("/login")
+    }, [])
 
     return (
         <HomeBG>

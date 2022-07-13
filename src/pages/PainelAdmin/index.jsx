@@ -11,8 +11,10 @@ import {
     IconButton
 } from "@chakra-ui/react"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Api from "../../Api"
+import { UserContext } from "../../providers/user"
+import { useHistory } from "react-router-dom"
 
 function PainelAdmin() {
     const [pedidos, setPedidos] = useState(null)
@@ -20,6 +22,14 @@ function PainelAdmin() {
     const [pagina, setPagina] = useState(1)
 
     const [pedidoAtual, setPedidoAtual] = useState(null)
+
+    const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !pegarToken() && history.push("/")
+    }, [])
 
     useEffect(() => {
         Api.get(`/pedidos?_page=${pagina}&_limit=6&_expand=user`, {

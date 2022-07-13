@@ -12,19 +12,36 @@ import Api from "../../Api"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, ImgLogo } from "./style"
 import { toast } from "react-toastify"
 import { useHistory } from "react-router-dom"
+import { UserContext } from "../../providers/user"
 
 export default function Login() {
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
     const [isLoading, setIsLoading] = useState(false)
     const history = useHistory()
+
+    const { pegarToken, pegarDadosUser } = useContext(UserContext)
+
+    useEffect(() => {
+        const chamadaAsync = async () => {
+            if (pegarToken()) {
+                const dataUser = await pegarDadosUser()
+
+                dataUser.isAdmin
+                    ? history.push("/admin")
+                    : history.push("/painel")
+            }
+        }
+
+        chamadaAsync()
+    }, [])
 
     const validacoesYup = yup.object().shape({
         email: yup

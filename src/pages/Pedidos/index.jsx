@@ -16,9 +16,20 @@ import {
     PedidosContainer,
     PedidosMain
 } from "./style"
+import { useContext, useEffect } from "react"
+import { UserContext } from "../../providers/user"
+import { useHistory } from "react-router-dom"
 
 function Pedidos() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+
+    const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !pegarToken() && history.push("/")
+    }, [])
 
     return (
         <PedidosBG>

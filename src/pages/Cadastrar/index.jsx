@@ -23,13 +23,20 @@ import {
     Flex,
     Box
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerCadastro, ImgLogo } from "./style"
+import { UserContext } from "../../providers/user"
 
 export default function Cadastro() {
     const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !!pegarToken() && history.push("/login")
+    }, [])
 
     const validacoesYup = yup.object().shape({
         name: yup.string().required("Preencher campo nome é obrigatório!"),

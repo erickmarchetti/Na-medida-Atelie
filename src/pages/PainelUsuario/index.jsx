@@ -31,10 +31,11 @@ import {
 
 import { toast } from "react-toastify"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 
 import Api from "../../Api"
+import { UserContext } from "../../providers/user"
 
 function PainelUsuario() {
     const [pedidos, setPedidos] = useState([])
@@ -43,6 +44,12 @@ function PainelUsuario() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !pegarToken() && history.push("/")
+    }, [])
 
     const request = () => {
         setIsLoading(true)
