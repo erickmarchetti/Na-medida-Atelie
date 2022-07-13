@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import homeBackground from "../../assets/Images/layer.png"
 
 export const HomeBG = styled.div`
@@ -53,6 +53,16 @@ export const HomeContainer = styled.div`
         width: 60%;
     }
 `
+const InitialAnimation = keyframes`
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+
+`
+
 export const ContainerText = styled.div`
     display: flex;
     flex-direction: column;
@@ -80,6 +90,7 @@ export const ContainerText = styled.div`
         padding: 1.5rem 0;
         justify-content: space-between;
         max-height: 50rem;
+        animation: ${InitialAnimation} 0.5s;
         h1 {
             font-size: 4vw;
         }
@@ -92,6 +103,7 @@ export const ContainerText = styled.div`
         font-size: 5.5rem;
     }
 `
+
 export const ContainerText1280 = styled.div``
 
 export const ImgContainer = styled.div`

@@ -29,16 +29,15 @@ export const StyledCard = styled.li`
 
     p {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
         flex: 1;
         width: auto;
         overflow-y: auto;
     }
 
     @media (min-width: 768px) {
-        min-width: 377px;
+        min-width: 300px;
         max-width: 377px;
-
     }
 `
 

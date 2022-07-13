@@ -81,6 +81,7 @@ export const FormSection = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
+    margin: 10px 0;
 
     @media (min-width: 768px) {
         justify-content: space-between;
