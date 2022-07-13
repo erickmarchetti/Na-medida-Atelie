@@ -105,32 +105,33 @@ export default function Cadastro() {
                     "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
                 }
             >
-                <Box display={{ base: "none", lg: "block" }}>
+                <Box display={{ base: "none", lg: "block" }} w="40vw">
                     <img
                         src={custommadewoman}
                         alt="custommadewoman"
                         style={{
                             height: "100vh",
                             position: "sticky",
-                            top: 0
+                            top: 0,
+                            objectFit: "cover"
                         }}
                     />
                 </Box>
 
                 <Flex
-                    flexDirection={{ base: "column", lg: "row-reverse" }}
+                    flexDirection="column"
                     alignItems={{ base: "center", lg: "flex-end" }}
                     justifyContent={{ base: "center", lg: "flex-start" }}
                     style={{
                         margin: "0"
                     }}
-                    gap="2.5rem"
                     width={{ base: "100%", lg: "60%" }}
                 >
                     <ImgLogo
                         src={logo}
                         alt="Na Medida Ateliê"
                         title="Página Inicial"
+                        alignSelf={{ base: "center", lg: "flex-end" }}
                         onClick={() => history.push("/")}
                     />
 

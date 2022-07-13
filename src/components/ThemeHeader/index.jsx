@@ -13,7 +13,6 @@ import { UserContext } from "../../providers/user"
 import { useEffect } from "react"
 
 function ThemeHeader({ admin }) {
-
     const { pegarDadosUser, user } = useContext(UserContext)
 
     const history = useHistory()
@@ -37,6 +36,15 @@ function ThemeHeader({ admin }) {
                     alt="Na medida ateliê"
                     w={{ base: "78.55px", sm: "126.75px" }}
                     h={{ base: "38.88", sm: "52.08px" }}
+                    sx={{
+                        cursor: "pointer",
+                        transition: "0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01)",
+                        "&:hover": {
+                            transform: "scale(1.1)",
+                            transition:
+                                "0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01)"
+                        }
+                    }}
                     onClick={() => history.push("/")}
                 />
 
