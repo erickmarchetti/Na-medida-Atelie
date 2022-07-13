@@ -11,7 +11,8 @@ import {
     Select,
     Stack,
     VStack,
-    List
+    List,
+    ListItem
 } from "@chakra-ui/react"
 import { MdArrowDropDown } from "react-icons/md"
 import { useState } from "react"
@@ -47,7 +48,7 @@ function ModalMedidas({ isOpen, onClose, pedidoAtual }) {
                 >
                     <ModalOverlay />
                     <ModalContent
-                        bg="var(--Grey-0)"
+                        bg="#F7F7F7"
                         margin="0"
                         padding={6}
                         maxW={{ base: "92vw", md: "650px" }}
@@ -113,37 +114,35 @@ function ModalMedidas({ isOpen, onClose, pedidoAtual }) {
                                             {pedidoAtual.categoria.toUpperCase()}
                                         </Text>
                                     </Text>
-                                    <Text fontWeight="600">
-                                        Medidas -
-                                        <Text
-                                            as="span"
-                                            fontWeight="normal"
-                                            color="var(--Grey-4)"
-                                        >
-                                            {" "}
-                                            <List>
-                                                {Object.keys(
-                                                    pedidoAtual.medidas
-                                                ).map((chave, index) => (
-                                                    <>
-                                                        {pedidoAtual.medidas[
-                                                            chave
-                                                        ] !== "" && (
-                                                            <li key={index}>
-                                                                {chave}:{" "}
-                                                                {
-                                                                    pedidoAtual
-                                                                        .medidas[
-                                                                        chave
-                                                                    ]
-                                                                }
-                                                            </li>
-                                                        )}
-                                                    </>
-                                                ))}
-                                            </List>
-                                        </Text>
-                                    </Text>
+                                    <Text fontWeight="600">Medidas - </Text>
+                                    <Stack
+                                        fontWeight="normal"
+                                        color="var(--Grey-4)"
+                                    >
+                                        {" "}
+                                        <List>
+                                            {Object.keys(
+                                                pedidoAtual.medidas
+                                            ).map((chave, index) => (
+                                                <ListItem key={index}>
+                                                    {pedidoAtual.medidas[
+                                                        chave
+                                                    ] !== "" && (
+                                                        <Text>
+                                                            {chave}:{" "}
+                                                            {
+                                                                pedidoAtual
+                                                                    .medidas[
+                                                                    chave
+                                                                ]
+                                                            }
+                                                        </Text>
+                                                    )}
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </Stack>
+
                                     <Text fontWeight="600">
                                         Observações -
                                         <Text
@@ -178,7 +177,7 @@ function ModalMedidas({ isOpen, onClose, pedidoAtual }) {
                                             setStatus(e.target.value)
                                         }
                                     >
-                                        <option value="Em Anlise">
+                                        <option value="Em Análise">
                                             Em analise
                                         </option>
                                         <option value="Em Confecção">
