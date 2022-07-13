@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMediaQuery } from "@chakra-ui/react"
 import {
     BackgroundImage,
@@ -7,7 +8,7 @@ import {
     HomeMain
 } from "./style"
 import { useHistory } from "react-router-dom"
-import { useState, useContext } from "react"
+import { motion } from "framer-motion"
 import { LoginButtonDesktop } from "../../components/Home/Desktop/LoginButtonDesktop"
 import { CadastroButtonDesktop } from "../../components/Home/Desktop/CadastroButtonDesktop"
 import { SobreNosButtonDesktop } from "../../components/Home/Desktop/SobreNosButtonDesktop"
@@ -18,7 +19,7 @@ import { CadastroButtonMobile } from "../../components/Home/Mobile/CadastroButto
 import { FeedbackButtonMobile } from "../../components/Home/Mobile/FeedbackButtonMobile"
 import { SobreNosButtonMobile } from "../../components/Home/Mobile/SobreNosButtonMobile"
 import { UserContext } from "../../providers/user"
-import { useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 
 function Home() {
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
@@ -35,24 +36,31 @@ function Home() {
         <>
             {!pegarToken() && (
                 <HomeBG>
-                    {isLargerThan768 && (
-                        <ButtonContainer>
-                            {!sobreNos && (
-                                <LoginButtonDesktop
-                                    push={history.push}
-                                ></LoginButtonDesktop>
-                            )}
-                            {!sobreNos && (
-                                <CadastroButtonDesktop
-                                    push={history.push}
-                                ></CadastroButtonDesktop>
-                            )}
-                            <SobreNosButtonDesktop
-                                sobreNos={sobreNos}
-                                setSobreNos={setSobreNos}
-                            ></SobreNosButtonDesktop>
-                        </ButtonContainer>
-                    )}
+                    <motion.div
+                        initial={{ x: 500 }}
+                        animate={{ x: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        {isLargerThan768 && (
+                            <ButtonContainer>
+                                {!sobreNos && (
+                                    <LoginButtonDesktop
+                                        push={history.push}
+                                    ></LoginButtonDesktop>
+                                )}
+                                {!sobreNos && (
+                                    <CadastroButtonDesktop
+                                        push={history.push}
+                                    ></CadastroButtonDesktop>
+                                )}
+                                <SobreNosButtonDesktop
+                                    sobreNos={sobreNos}
+                                    setSobreNos={setSobreNos}
+                                ></SobreNosButtonDesktop>
+                            </ButtonContainer>
+                        )}
+                    </motion.div>
+
                     <HomeMain>
                         <HomeContainer>
                             {sobreNos ? (

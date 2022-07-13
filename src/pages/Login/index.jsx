@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
     Button,
     FormControl,
@@ -14,6 +15,7 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext, useEffect, useState } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
+import { motion } from "framer-motion"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
 import { DivContainerLogin, ImgLogo } from "./style"
@@ -89,11 +91,17 @@ export default function Login() {
 
     return (
         <>
-            {!pegarToken() && (
+            {!!pegarToken() && (
                 <DivContainerLogin>
-                    <div className="imgHomem">
-                        <img src={custom} alt="custom" />
-                    </div>
+                    <motion.div
+                        initial={{ x: 100, y: 100 }}
+                        animate={{ x: 0, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="imgHomem">
+                            <img src={custom} alt="custom" />
+                        </div>
+                    </motion.div>
 
                     <div className="divResponsiva">
                         <ImgLogo
@@ -107,100 +115,108 @@ export default function Login() {
                             <div>
                                 <h1>É um prazer ver você novamente!</h1>
                             </div>
-                            <form onSubmit={handleSubmit(registro)}>
-                                <FormControl className="form">
-                                    <div className="loginForm">
-                                        <h2>Login</h2>
-                                    </div>
+                            <motion.div
+                                initial={{ x: 500, y: 500 }}
+                                animate={{ x: 0, y: 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <form onSubmit={handleSubmit(registro)}>
+                                    <FormControl className="form">
+                                        <div className="loginForm">
+                                            <h2>Login</h2>
+                                        </div>
 
-                                    <FormLabel
-                                        sx={formErrorLabelStyle}
-                                        htmlFor="email"
-                                    >
-                                        Email
-                                    </FormLabel>
-                                    <Input
-                                        id="email"
-                                        sx={{
-                                            borderColor:
-                                                "2px solid var(--Grey-4)"
-                                        }}
-                                        type="email"
-                                        placeholder="Insira seu Email"
-                                        isInvalid={errors.email}
-                                        errorBorderColor="red.500"
-                                        {...register("email")}
-                                    />
-                                    {errors.email && (
-                                        <FormHelperText
-                                            sx={formErrorStyle}
-                                            color="#e53e3e"
+                                        <FormLabel
+                                            sx={formErrorLabelStyle}
+                                            htmlFor="email"
                                         >
-                                            {errors.email.message}
-                                        </FormHelperText>
-                                    )}
-                                    <FormLabel
-                                        sx={formErrorLabelStyle}
-                                        htmlFor="password"
-                                    >
-                                        Senha
-                                    </FormLabel>
-                                    <InputGroup>
-                                        <InputRightElement>
-                                            <IconButton
-                                                bg="transparent"
-                                                onClick={handleClick}
-                                                _active={false}
-                                                _hover={false}
-                                                icon={
-                                                    show ? (
-                                                        <ViewIcon />
-                                                    ) : (
-                                                        <ViewOffIcon />
-                                                    )
-                                                }
-                                            />
-                                        </InputRightElement>
+                                            Email
+                                        </FormLabel>
                                         <Input
-                                            id="password"
+                                            id="email"
                                             sx={{
                                                 borderColor:
                                                     "2px solid var(--Grey-4)"
                                             }}
-                                            type={show ? "text" : "password"}
+                                            type="email"
+                                            placeholder="Insira seu Email"
+                                            isInvalid={errors.email}
                                             errorBorderColor="red.500"
-                                            isInvalid={errors.password}
-                                            placeholder="•••••••••••••••••••••"
-                                            {...register("password")}
+                                            {...register("email")}
                                         />
-                                    </InputGroup>
-                                    {errors.password && (
-                                        <FormHelperText
-                                            sx={formErrorStyle}
-                                            color="#e53e3e"
+                                        {errors.email && (
+                                            <FormHelperText
+                                                sx={formErrorStyle}
+                                                color="#e53e3e"
+                                            >
+                                                {errors.email.message}
+                                            </FormHelperText>
+                                        )}
+                                        <FormLabel
+                                            sx={formErrorLabelStyle}
+                                            htmlFor="password"
                                         >
-                                            {errors.password.message}
-                                        </FormHelperText>
-                                    )}
-                                    <Button
-                                        isLoading={isLoading}
-                                        className="butonLogin"
-                                        type="submit"
-                                    >
-                                        Login
-                                    </Button>
-                                    <p>
-                                        Não possui uma conta?
-                                        <a
-                                            href="/register"
-                                            title="Página de Cadastro"
+                                            Senha
+                                        </FormLabel>
+                                        <InputGroup>
+                                            <InputRightElement>
+                                                <IconButton
+                                                    bg="transparent"
+                                                    onClick={handleClick}
+                                                    _active={false}
+                                                    _hover={false}
+                                                    icon={
+                                                        show ? (
+                                                            <ViewIcon />
+                                                        ) : (
+                                                            <ViewOffIcon />
+                                                        )
+                                                    }
+                                                />
+                                            </InputRightElement>
+                                            <Input
+                                                id="password"
+                                                sx={{
+                                                    borderColor:
+                                                        "2px solid var(--Grey-4)"
+                                                }}
+                                                type={
+                                                    show ? "text" : "password"
+                                                }
+                                                errorBorderColor="red.500"
+                                                isInvalid={errors.password}
+                                                placeholder="•••••••••••••••••••••"
+                                                {...register("password")}
+                                            />
+                                        </InputGroup>
+                                        {errors.password && (
+                                            <FormHelperText
+                                                sx={formErrorStyle}
+                                                color="#e53e3e"
+                                            >
+                                                {errors.password.message}
+                                            </FormHelperText>
+                                        )}
+                                        <Button
+                                            isLoading={isLoading}
+                                            className="butonLogin"
+                                            type="submit"
                                         >
-                                            {" "}
-                                            Cadastre-se
-                                        </a>
-                                    </p>
-                                </FormControl>
-                            </form>
+                                            Login
+                                        </Button>
+                                        <p>
+                                            Não possui uma conta?
+                                            <a
+                                                href="/register"
+                                                title="Página de Cadastro"
+                                            >
+                                                {" "}
+                                                Cadastre-se
+                                            </a>
+                                        </p>
+                                    </FormControl>
+                                </form>
+                            </motion.div>
                         </div>
                     </div>
                 </DivContainerLogin>

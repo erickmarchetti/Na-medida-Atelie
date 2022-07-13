@@ -1,4 +1,5 @@
 import { Flex, List } from "@chakra-ui/react"
+import { motion } from "framer-motion"
 import ThemeHeader from "../../components/ThemeHeader"
 import { StyledAvaliacoes } from "./style.js"
 
@@ -41,36 +42,49 @@ function Avaliacoes() {
             <ThemeHeader />
 
             <StyledAvaliacoes>
-                <Flex
-                    backgroundImage={bg}
-                    backgroundSize="cover"
-                    backgroundPosition="center"
-                    w="100%"
-                    h="45vh"
-                    objectFit="fill"
-                    justifyContent="center"
-                    display="flex"
-                    alignItems="center"
+                <motion.div
+                    initial={{ x: -500 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
                 >
-                    <h1>Opiniões dos nossos clientes</h1>
-                </Flex>
-
-                <Flex h="432px" justifyContent="center" alignItems="center">
-                    <List
-                        p="50px 5vw 20px 5vw"
-                        minW="100vw"
-                        maxW="1280px"
-                        h="100%"
+                    <Flex
+                        backgroundImage={bg}
+                        backgroundSize="cover"
+                        backgroundPosition="center"
+                        w="100%"
+                        h="45vh"
+                        objectFit="fill"
+                        justifyContent="center"
                         display="flex"
-                        flexFlow="row"
-                        overflowX="scroll"
-                        gap="20px"
+                        alignItems="center"
                     >
-                        {avaliacoesExemplo.map((avaliacao, index) => (
-                            <CardAvaliacao avaliacao={avaliacao} key={index} />
-                        ))}
-                    </List>
-                </Flex>
+                        <h1>Opiniões dos nossos clientes</h1>
+                    </Flex>
+
+                    <Flex h="432px" justifyContent="center" alignItems="center">
+                        <List
+                            p="50px 5vw 20px 5vw"
+                            minW="100vw"
+                            maxW="1280px"
+                            h="100%"
+                            display="flex"
+                            justifyContent={{
+                                base: "flex-start",
+                                lg: "center"
+                            }}
+                            flexFlow="row"
+                            overflowX="scroll"
+                            gap="20px"
+                        >
+                            {avaliacoesExemplo.map((avaliacao, index) => (
+                                <CardAvaliacao
+                                    avaliacao={avaliacao}
+                                    key={index}
+                                />
+                            ))}
+                        </List>
+                    </Flex>
+                </motion.div>
             </StyledAvaliacoes>
         </>
     )
