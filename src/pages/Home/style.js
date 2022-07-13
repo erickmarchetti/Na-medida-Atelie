@@ -39,8 +39,7 @@ export const HomeMain = styled.main`
 `
 
 export const HomeContainer = styled.div`
-    height: ${(props) =>
-        props.desktop ? "calc(100vh - 50px)" : "calc(110vh - 50px)"};
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +56,7 @@ export const HomeContainer = styled.div`
 export const ContainerText = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
     height: 100%;
 
