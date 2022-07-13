@@ -91,7 +91,7 @@ export default function Login() {
 
     return (
         <>
-            {!!pegarToken() && (
+            {!pegarToken() && (
                 <DivContainerLogin>
                     <motion.div
                         initial={{ x: 100, y: 100 }}
