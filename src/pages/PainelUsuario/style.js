@@ -4,21 +4,6 @@ import bgImg from "../../assets/Images/custommadework.svg"
 export const UsuarioBG = styled.div`
     max-width: 100vw;
     font-family: "Nunito";
-
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px black;
-        border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #40e0d0;
-        background: -webkit-linear-gradient(to top, #ff0080, #ff8c00, #40e0d0);
-        background: linear-gradient(to top, #ff0080, #ff8c00, #40e0d0);
-        border-radius: 10px;
-        opacity: 0.1;
-    }
 `
 
 export const ContainerMain = styled.div`
@@ -44,35 +29,59 @@ export const BackgroundImg = styled.div`
 export const ContainerButton = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5rem;
 `
 
 export const ContainerPedidos = styled.div`
     width: 90%;
     max-width: 1280px;
-    min-height: calc(50vh - 98px);
-
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto 1rem;
     h1 {
         text-align: left;
         font-weight: 700;
         font-size: 30px;
     }
+
+    p {
+        text-align: center;
+        font-size: 55px;
+        color: var(--Grey-3);
+        max-width: 570px;
+        margin: auto;
+    }
 `
 
 export const ListaPedidos = styled.div`
-    height: 80%;
     display: flex;
     align-items: center;
     gap: 20px;
     overflow-x: scroll;
     width: 100%;
+    padding: 0.2rem 0;
+    ::-webkit-scrollbar {
+        height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px var(--Grey-3);
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--Grey-3);
+        border-radius: 10px;
+        opacity: 0.1;
+    }
 `
 
 export const Item = styled.div`
     min-width: 380px;
     height: 190px;
-    background-color: #fafafa;
-    border: 2px solid #181818;
+    background-color: var(--BackgroundColor-Main);
+    border: 2px solid var(--BackgroundColor-Black);
     border-radius: 25px;
     overflow: hidden;
 
@@ -94,12 +103,13 @@ export const ItemDescription = styled.div`
     h2 {
         font-size: 30px;
         font-weight: 700;
-        color: #181818;
+        color: var(--BackgroundColor-Black);
+        text-transform: capitalize;
     }
 
     h5 {
         font-weight: 700;
-        color: #3cb371;
+        color: var(--Green);
         font-size: 18px;
     }
 `
@@ -112,18 +122,18 @@ export const ItemData = styled.div`
     h3 {
         font-size: 15px;
         font-weight: 700;
-        color: #181818;
+        color: var(--Black);
     }
 
     h4 {
         font-size: 15px;
         font-weight: 700;
-        color: #ababab;
+        color: var(--Grey-3);
     }
 `
 
 export const ItemStatus = styled.div`
-    background-color: #b2f5ea;
+    background-color: var(--BlueLigth);
     font-size: 12px;
     width: 60%;
     height: 24px;
