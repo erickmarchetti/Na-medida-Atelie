@@ -76,13 +76,43 @@ function ThemeHeader({ admin, usuarioLogado }) {
                     >
                         <span>Admin</span>
 
-                        <Image
-                            src={semImagem}
-                            w={{ base: "30px", sm: "50px" }}
-                            h={{ base: "30px", sm: "50px" }}
-                            objectFit="cover"
-                            borderRadius="100%"
-                        />
+                        <Popover>
+                            <PopoverTrigger>
+                                <IconButton
+                                    _hover={false}
+                                    bg="transparent"
+                                    _active={false}
+                                >
+                                    <Image
+                                        src={semImagem}
+                                        w={{ base: "30px", sm: "50px" }}
+                                        h={{ base: "30px", sm: "50px" }}
+                                        objectFit="cover"
+                                        borderRadius="100%"
+                                    />
+                                </IconButton>
+                            </PopoverTrigger>
+                            <Portal>
+                                <PopoverContent width="fit-content">
+                                    <PopoverArrow />
+                                    <PopoverBody>
+                                        <Button
+                                            _active={false}
+                                            sx={{
+                                                bg: "var(--Red)",
+                                                color: "var(--White)",
+                                                "&:hover": {
+                                                    bg: "var(--Color-Primary-Dark)"
+                                                }
+                                            }}
+                                            onClick={logout}
+                                        >
+                                            Sair
+                                        </Button>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Portal>
+                        </Popover>
                     </Flex>
                 ) : (
                     !!user && (
