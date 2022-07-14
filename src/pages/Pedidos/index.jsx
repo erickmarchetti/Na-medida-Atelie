@@ -50,7 +50,8 @@ function Pedidos() {
             comprimento_manga: yup.number().integer().positive()
         }),
         imagem_referencia: yup.string().url(),
-        observacoes: yup.string()
+        observacoes: yup.string(),
+        observacoes_medidas: yup.string()
     })
 
     const { register, handleSubmit } = useForm({
@@ -83,6 +84,7 @@ function Pedidos() {
             categoria: data.categoria,
             imagem_referencia: data.imagem_referencia,
             observacoes: data.observacoes,
+            observacoes_medidas: data.observacoes_medidas,
             medidas: {
                 torax_busto: data.torax_busto,
                 cintura: data.cintura,
@@ -224,7 +226,7 @@ function Pedidos() {
                                             bg="var(--Grey-1)"
                                             borderColor="var(--Grey-4)"
                                             borderWidth="2px"
-                                            placeholder="URL do site"
+                                            placeholder="URL da imagem"
                                             {...register("imagem_referencia")}
                                         />
                                     </FormSection>
@@ -616,7 +618,7 @@ function Pedidos() {
                                             bg="var(--Grey-1)"
                                             borderColor="var(--Grey-4)"
                                             borderWidth="2px"
-                                            {...register("observacoes")}
+                                            {...register("observacoes_medidas")}
                                         />
                                     </FormSection>
                                 </PedidosCard>
