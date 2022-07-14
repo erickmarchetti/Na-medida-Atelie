@@ -130,9 +130,4 @@ export const BackgroundImage = styled.div`
     width: 40%;
     height: 100vh;
     z-index: -1;
-    display: none;
-
-    @media (min-width: 768px) {
-        display: block;
-    }
 `
