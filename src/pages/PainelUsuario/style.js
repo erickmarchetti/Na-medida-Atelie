@@ -31,6 +31,11 @@ export const ContainerButton = styled.div`
     display: flex;
     justify-content: center;
     gap: 5rem;
+
+    @media (max-width: 750px) {
+        flex-flow: column nowrap;
+        align-items: center;
+    }
 `
 
 export const ContainerPedidos = styled.div`
