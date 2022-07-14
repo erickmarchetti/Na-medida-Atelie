@@ -36,8 +36,10 @@ function ThemeHeader({ admin, usuarioLogado }) {
     const logout = () => {
         localStorage.clear()
         setUser(null)
-        toast.info("Até logo! 👋")
-        setTimeout(() => history.push("/"), 3100)
+        toast.info("Até logo! 👋", {
+            autoClose: 700
+        })
+        history.push("/")
     }
 
     return (
