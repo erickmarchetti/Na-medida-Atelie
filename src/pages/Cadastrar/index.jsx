@@ -116,24 +116,29 @@ export default function Cadastro() {
                             "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
                         }
                     >
-                        <Box display={{ base: "none", lg: "block" }} w="40vw">
-                            <motion.div
-                                initial={{ x: -100, y: -100 }}
-                                animate={{ x: 0, y: 0 }}
-                                transition={{ duration: 0.3 }}
+                        <motion.div
+                            initial={{ x: -100, y: -100 }}
+                            animate={{ x: 0, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Box
+                                display={{ base: "none", lg: "block" }}
+                                w="50vw"
                             >
                                 <img
                                     src={custommadewoman}
                                     alt="custommadewoman"
                                     style={{
                                         height: "100vh",
-                                        position: "sticky",
+                                        position: "absolute",
                                         top: 0,
-                                        objectFit: "cover"
+                                        left: -30,
+                                        objectFit: "cover",
+                                        zIndex: 1
                                     }}
                                 />
-                            </motion.div>
-                        </Box>
+                            </Box>
+                        </motion.div>
 
                         <Flex
                             flexDirection="column"
@@ -161,7 +166,7 @@ export default function Cadastro() {
                             >
                                 <Stack
                                     as="form"
-                                    w={{ base: "90%", md: "50%", lg: "400px" }}
+                                    w={{ base: "95%", md: "100%", lg: "400px" }}
                                     transition="0.3s"
                                     maxH={"100vh"}
                                     onSubmit={handleSubmit(registro)}
@@ -175,7 +180,8 @@ export default function Cadastro() {
                                         display: "flex",
                                         flexDirection: "column",
                                         alignSelf: "center",
-                                        p: ".5rem 2rem"
+                                        p: ".5rem 2rem",
+                                        m: "0 auto"
                                     }}
                                 >
                                     <Heading textAlign="center">

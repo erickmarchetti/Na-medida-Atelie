@@ -117,7 +117,7 @@ function PainelUsuario() {
                                             }}
                                             onClick={() => {
                                                 toast.success(
-                                                    "Agradeçemos pelo feedback... Em breve será adicionado pela nossa equipe ao painel de avaliações!"
+                                                    "Agradeçemos pelo feedback :) Em breve será adicionado pela nossa equipe ao painel de avaliações!"
                                                 )
                                                 onClose()
                                             }}

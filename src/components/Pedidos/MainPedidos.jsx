@@ -447,7 +447,7 @@ export function MainPedidos(props) {
                         bg="var(--Grey-1)"
                         borderColor="var(--Grey-4)"
                         borderWidth="2px"
-                        {...props.register("observacoes")}
+                        {...props.register("observacoes_medidas")}
                     />
                 </FormSection>
             </PedidosCard>
