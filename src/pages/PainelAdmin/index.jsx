@@ -94,9 +94,10 @@ function PainelAdmin() {
                                 <Box
                                     sx={{
                                         "&:hover": {
-                                            transform: "scale(1.2)"
+                                            transform: "scale(1.1)"
                                         }
                                     }}
+                                    transition="0.3s"
                                     onClick={(e) => {
                                         onOpen(e)
                                         setPedidoAtual(item)
