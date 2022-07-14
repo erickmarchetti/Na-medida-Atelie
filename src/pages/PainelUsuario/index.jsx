@@ -116,7 +116,7 @@ function PainelUsuario() {
                                                     "var(--Color-Primary-Dark)"
                                             }}
                                             onClick={() => {
-                                                toast.sucess(
+                                                toast.success(
                                                     "Agradeçemos pelo feedback... Em breve será adicionado pela nossa equipe ao painel de avaliações!"
                                                 )
                                                 onClose()
@@ -136,8 +136,9 @@ function PainelUsuario() {
                                         bg="var(--Color-Primary-Main)"
                                         boxShadow="dark-lg"
                                         fontSize="30px"
-                                        w="320px"
+                                        w="95vw"
                                         h="80px"
+                                        maxW="320px"
                                         fontWeight="700"
                                         _active={false}
                                         _hover={{
@@ -158,8 +159,9 @@ function PainelUsuario() {
                                         bg="var(--BackgroundColor-Main)"
                                         boxShadow="dark-lg"
                                         fontSize="30px"
-                                        w="320px"
+                                        w="95vw"
                                         h="80px"
+                                        maxW="320px"
                                         fontWeight="700"
                                         onClick={onOpen}
                                         _active={false}
