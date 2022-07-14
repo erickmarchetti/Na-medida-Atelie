@@ -22,22 +22,18 @@ export const DivContainerLogin = styled.div`
     );
     position: absolute;
     top: 0;
+    right: 0;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 100vw;
 
-    .imgHomem {
-        display: flex;
-        img {
-            height: 100vh;
-        }
-    }
     .divFormulario {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: auto;
+        width: 50vw;
 
         h1 {
             font-family: "Nunito";
@@ -126,10 +122,11 @@ export const DivContainerLogin = styled.div`
         display: flex;
         flex-direction: row;
     }
-    @media (max-width: 1200px) {
+    @media (max-width: 1199px) {
         flex-direction: column;
         .divResponsiva {
             flex-direction: column;
+            align-items: center;
         }
         .imgHomem {
             display: none;
@@ -177,14 +174,32 @@ export const DivContainerLogin = styled.div`
     }
 `
 
+export const BGImage = styled.div`
+    background-image: url(${(props) => props.src});
+    background-size: cover;
+    display: none;
+    position: relative;
+    right: 0;
+    width: 40vw;
+    height: 100vh;
+    z-index: 1;
+
+    @media (min-width: 1200px) {
+        display: block;
+    }
+`
+
 export const ImgLogo = styled.img`
     display: flex;
     align-items: flex-start;
     cursor: pointer;
+    position: relative;
+    top: 0;
+    right: 0;
 
     width: 9rem;
     justify-self: flex-start;
-    margin: 0.5rem 3rem;
+    margin: 0.5rem 2rem;
     align-self: center;
     transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     :hover {
@@ -192,7 +207,7 @@ export const ImgLogo = styled.img`
         transition: 0.5s cubic-bezier(0.68, 0.09, 0.33, 1.01);
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
         align-self: flex-start;
     }
 `
