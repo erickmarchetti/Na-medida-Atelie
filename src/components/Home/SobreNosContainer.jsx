@@ -11,7 +11,7 @@ import Fidel from "../../assets/AvatarImages/Fidel.jpg"
 export function SobreNosContainer() {
     return (
         <>
-            <Stack marginTop="auto" maxW="90vw">
+            <Stack marginTop="auto" marginRight={0} w="100%">
                 <motion.div
                     initial={{ x: 500 }}
                     animate={{ x: 0 }}
@@ -19,24 +19,28 @@ export function SobreNosContainer() {
                 >
                     <Text
                         marginTop="auto"
-                        maxW="90%"
+                        w="100%"
                         textAlign="justify"
                         fontSize="lg"
                         fontWeight="bold"
+                        m="0"
                     >
-                        Nós somos uma equipe de devs front-end que
-                        indentificamos uma deficiência no mercado de roupas sob
-                        medida, e quem nunca teve um problema com uma roupa
-                        "padrão" que ficou larga numa parte e curta em outra?
-                        Pensando nisso, nossa equipe desenvolveu este
-                        maravilhoso site para suprir essa falta utilizando nosso
-                        site como ferramenta que deixa aquela peça que você
-                        tanto gostou e não ficou do jeito que mais importa{" "}
-                        <em>
-                            do seu jeito <b>único</b> de ser
-                        </em>{" "}
-                        criando a peça que você desejar especialmente para você.
+                        <p>
+                            Nós somos uma equipe de devs front-end que
+                            identificamos uma deficiência no mercado de roupas
+                            sob medida, e quem nunca teve um problema com uma
+                            roupa "padrão" que ficou larga numa parte e curta em
+                            outra?
+                        </p>
                         <br></br>
+                        <p>
+                            Pensando nisso, nossa equipe desenvolveu este
+                            maravilhoso site para suprir essa falta utilizando
+                            nosso site como ferramenta que deixa aquela peça que
+                            você tanto gostou e não ficou do jeito que mais
+                            importa <em>do seu jeito único de ser</em> criando a
+                            peça que você desejar especialmente para você.
+                        </p>
                     </Text>
                 </motion.div>
             </Stack>
