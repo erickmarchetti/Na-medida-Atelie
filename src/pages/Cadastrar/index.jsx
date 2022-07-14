@@ -28,7 +28,7 @@ import {
 import { useState, useEffect, useContext } from "react"
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import logo from "../../assets/Images/logo.svg"
-import { DivContainerCadastro, ImgLogo } from "./style"
+import { BGImage, DivContainerCadastro, ImgLogo } from "./style"
 import { UserContext } from "../../providers/user"
 
 export default function Cadastro() {
@@ -111,7 +111,8 @@ export default function Cadastro() {
                 <DivContainerCadastro>
                     <Stack
                         direction="row"
-                        width="100%"
+                        maxW="100vw"
+                        maxH="100vh"
                         bg={
                             "linear-gradient(to bottom, #FFEAEF 0%, #FFFFFF 65%, #FFFFFF 100%)"
                         }
@@ -121,11 +122,13 @@ export default function Cadastro() {
                             animate={{ x: 0, y: 0 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <Box
+                            <BGImage src={custommadewoman} />
+
+                            {/* <Box
                                 display={{ base: "none", lg: "block" }}
                                 w="50vw"
-                            >
-                                <img
+                            > */}
+                            {/* <img
                                     src={custommadewoman}
                                     alt="custommadewoman"
                                     style={{
@@ -136,27 +139,30 @@ export default function Cadastro() {
                                         objectFit: "cover",
                                         zIndex: 1
                                     }}
-                                />
-                            </Box>
+                                /> */}
+                            {/* </Box> */}
                         </motion.div>
 
                         <Flex
                             flexDirection="column"
                             alignItems={{ base: "center", lg: "center" }}
                             justifyContent={{
-                                base: "center",
+                                base: "space-evenly",
                                 lg: "flex-start"
                             }}
                             style={{
-                                margin: "0"
+                                margin: "0",
+                                padding: "2vh 0"
                             }}
                             width={{ base: "100%", lg: "60%" }}
+                            height="100vh"
+                            padding="0"
                         >
                             <ImgLogo
                                 src={logo}
                                 alt="Na Medida Ateliê"
                                 title="Página Inicial"
-                                alignSelf={{ base: "center", lg: "flex-end" }}
+                                alignSelf={{ base: "center", lg: "center" }}
                                 onClick={() => history.push("/")}
                             />
                             <motion.div
@@ -165,10 +171,13 @@ export default function Cadastro() {
                                 transition={{ duration: 0.3 }}
                             >
                                 <Stack
+                                    zIndex="-99999"
+                                    display="flex"
+                                    flexDir="column"
+                                    justifyContent="space-between"
                                     as="form"
                                     w={{ base: "95%", md: "100%", lg: "400px" }}
                                     transition="0.3s"
-                                    maxH={"100vh"}
                                     onSubmit={handleSubmit(registro)}
                                     sx={{
                                         background:
