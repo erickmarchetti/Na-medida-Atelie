@@ -8,7 +8,6 @@ function CardAvaliacao({ avaliacao }) {
             <RoundBorder>
                 <Image
                     src={avaliacao.user.avatar}
-                    backg
                     alt="vai ter um nome ainda"
                 />
             </RoundBorder>
