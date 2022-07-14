@@ -18,7 +18,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import { motion } from "framer-motion"
 import custom from "../../assets/Images/custom.png"
 import logo from "../../assets/Images/logo.svg"
-import { DivContainerLogin, ImgLogo } from "./style"
+import { BGImage, DivContainerLogin, ImgLogo } from "./style"
 import { toast } from "react-toastify"
 import { useHistory } from "react-router-dom"
 import { UserContext } from "../../providers/user"
@@ -98,9 +98,7 @@ export default function Login() {
                         animate={{ x: 0, y: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className="imgHomem">
-                            <img src={custom} alt="custom" />
-                        </div>
+                        <BGImage src={custom} />
                     </motion.div>
 
                     <div className="divResponsiva">
