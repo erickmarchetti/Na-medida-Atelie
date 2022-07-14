@@ -38,6 +38,7 @@ export const DivContainerLogin = styled.div`
         flex-direction: column;
         align-items: center;
         margin: auto;
+
         h1 {
             font-family: "Nunito";
             font-style: normal;
@@ -49,7 +50,7 @@ export const DivContainerLogin = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            transition: 0.3s ease-in-out;
+            transition: 2s ease-in-out;
         }
     }
     .form {
@@ -114,9 +115,6 @@ export const DivContainerLogin = styled.div`
         }
         a {
             color: var(--Color-Primary-Main);
-            :hover {
-                border-bottom: dashed 2px #d94167;
-            }
         }
     }
     .loginForm {

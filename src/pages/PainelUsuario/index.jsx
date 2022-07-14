@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ThemeHeader from "../../components/ThemeHeader"
 import {
     Button,
@@ -16,6 +17,8 @@ import {
     Badge
 } from "@chakra-ui/react"
 
+import { motion } from "framer-motion"
+
 import {
     BackgroundImg,
     ContainerButton,
@@ -31,10 +34,11 @@ import {
 
 import { toast } from "react-toastify"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 
 import Api from "../../Api"
+import { UserContext } from "../../providers/user"
 
 function PainelUsuario() {
     const [pedidos, setPedidos] = useState([])
@@ -43,6 +47,12 @@ function PainelUsuario() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const history = useHistory()
+
+    const { pegarToken } = useContext(UserContext)
+
+    useEffect(() => {
+        !pegarToken() && history.push("/")
+    }, [])
 
     const request = () => {
         setIsLoading(true)
@@ -63,148 +73,186 @@ function PainelUsuario() {
     }, [])
 
     return (
-        <UsuarioBG>
-            <ThemeHeader usuarioLogado />
-            <ContainerMain>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Deixe seu feedback!</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                            <Stack mb={3}>
-                                <Text>Escreva sua experiência abaixo:</Text>
-                            </Stack>
-                            <Stack>
-                                <Textarea
-                                    resize="none"
-                                    placeholder="Seu comentário..."
-                                />
-                            </Stack>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button
-                                color="var(--White)"
-                                bg="var(--Color-Primary-Main)"
-                                fontSize="20px"
-                                marginTop="5px"
-                                _hover={{
-                                    bgColor: "var(--Color-Primary-Dark)",
-                                    borderColor: "var(--Color-Primary-Dark)"
-                                }}
-                                onClick={() => {
-                                    toast.info(
-                                        "Obrigado pelo feedback! Infelizmente não possuimos essa feature ainda :("
-                                    )
-                                    onClose()
-                                }}
-                            >
-                                Enviar
-                            </Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-                <BackgroundImg>
-                    <ContainerButton>
-                        <Button
-                            variant="outline"
-                            borderColor="var(--Color-Primary-Main)"
-                            color="var(--White)"
-                            bg="var(--Color-Primary-Main)"
-                            boxShadow="dark-lg"
-                            fontSize="30px"
-                            w="320px"
-                            h="80px"
-                            fontWeight="700"
-                            _active={false}
-                            _hover={{
-                                bgColor: "var(--Color-Primary-Dark)",
-                                borderColor: "var(--Color-Primary-Dark)"
-                            }}
-                            onClick={() => history.push("/pedidos")}
-                        >
-                            Fazer pedido
-                        </Button>
-                        <Button
-                            variant="outline"
-                            borderColor="var(--BackgroundColor-Black)"
-                            borderWidth="2px"
-                            color="var(--Black)"
-                            bg="var(--BackgroundColor-Main)"
-                            boxShadow="dark-lg"
-                            fontSize="30px"
-                            w="320px"
-                            h="80px"
-                            fontWeight="700"
-                            onClick={onOpen}
-                            _active={false}
-                            _hover={{
-                                textDecoration: "underline"
-                            }}
-                        >
-                            Feedback
-                        </Button>
-                    </ContainerButton>
-                </BackgroundImg>
-                <ContainerPedidos>
-                    <h1>Meus Pedidos</h1>
-                    {isLoading ? (
-                        <Spinner
-                            thickness="4px"
-                            speed="0.65s"
-                            emptyColor="gray.200"
-                            color="blue.500"
-                            size="xl"
-                            display="flex"
-                            alignSelf="center"
-                        />
-                    ) : (
-                        <>
-                            {pedidos.length === 0 ? (
-                                <p>Você ainda não possui pedidos! :(</p>
-                            ) : (
-                                <ListaPedidos>
-                                    {pedidos?.map((pedido, index) => (
-                                        <Item key={index}>
-                                            <ItemImg
-                                                src={pedido.imagem_referencia}
+        <>
+            {!!pegarToken() && (
+                <UsuarioBG>
+                    <ThemeHeader usuarioLogado />
+                    <motion.div
+                        initial={{ x: -100, y: -100 }}
+                        animate={{ x: 0, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <ContainerMain>
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                                <ModalOverlay />
+                                <ModalContent>
+                                    <ModalHeader>
+                                        Deixe seu feedback!
+                                    </ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody>
+                                        <Stack mb={3}>
+                                            <Text>
+                                                Escreva sua experiência abaixo:
+                                            </Text>
+                                        </Stack>
+                                        <Stack>
+                                            <Textarea
+                                                resize="none"
+                                                placeholder="Seu comentário..."
                                             />
-                                            <ItemDescription>
-                                                <h2>{pedido.categoria}</h2>
-                                                <ItemData>
-                                                    <h3>Data:</h3>
-                                                    <h4>{pedido.data}</h4>
-                                                </ItemData>
-                                                <h5>
-                                                    {pedido.preco.toLocaleString(
-                                                        "pt-br",
-                                                        {
-                                                            style: "currency",
-                                                            currency: "BRL"
-                                                        }
-                                                    )}
-                                                </h5>
-                                                <Badge
-                                                    height="25px"
-                                                    borderRadius="lg"
-                                                    px="2"
-                                                    colorScheme="teal"
-                                                    fontFamily="Nunito"
-                                                    lineHeight="25px"
-                                                    marginBottom=".5rem"
-                                                >
-                                                    {pedido.stats}
-                                                </Badge>
-                                            </ItemDescription>
-                                        </Item>
-                                    ))}
-                                </ListaPedidos>
-                            )}
-                        </>
-                    )}
-                </ContainerPedidos>
-            </ContainerMain>
-        </UsuarioBG>
+                                        </Stack>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button
+                                            color="var(--White)"
+                                            bg="var(--Color-Primary-Main)"
+                                            fontSize="20px"
+                                            marginTop="5px"
+                                            _hover={{
+                                                bgColor:
+                                                    "var(--Color-Primary-Dark)",
+                                                borderColor:
+                                                    "var(--Color-Primary-Dark)"
+                                            }}
+                                            onClick={() => {
+                                                toast.sucess(
+                                                    "Agradeçemos pelo feedback... Em breve será adicionado pela nossa equipe ao painel de avaliações!"
+                                                )
+                                                onClose()
+                                            }}
+                                        >
+                                            Enviar
+                                        </Button>
+                                    </ModalFooter>
+                                </ModalContent>
+                            </Modal>
+                            <BackgroundImg>
+                                <ContainerButton>
+                                    <Button
+                                        variant="outline"
+                                        borderColor="var(--Color-Primary-Main)"
+                                        color="var(--White)"
+                                        bg="var(--Color-Primary-Main)"
+                                        boxShadow="dark-lg"
+                                        fontSize="30px"
+                                        w="320px"
+                                        h="80px"
+                                        fontWeight="700"
+                                        _active={false}
+                                        _hover={{
+                                            bgColor:
+                                                "var(--Color-Primary-Dark)",
+                                            borderColor:
+                                                "var(--Color-Primary-Dark)"
+                                        }}
+                                        onClick={() => history.push("/pedidos")}
+                                    >
+                                        Fazer pedido
+                                    </Button>
+                                    <Button
+                                        variant="outline"
+                                        borderColor="var(--BackgroundColor-Black)"
+                                        borderWidth="2px"
+                                        color="var(--Black)"
+                                        bg="var(--BackgroundColor-Main)"
+                                        boxShadow="dark-lg"
+                                        fontSize="30px"
+                                        w="320px"
+                                        h="80px"
+                                        fontWeight="700"
+                                        onClick={onOpen}
+                                        _active={false}
+                                        _hover={{
+                                            textDecoration: "underline"
+                                        }}
+                                    >
+                                        Feedback
+                                    </Button>
+                                </ContainerButton>
+                            </BackgroundImg>
+                            <ContainerPedidos>
+                                <h1>Meus Pedidos</h1>
+                                {isLoading ? (
+                                    <Spinner
+                                        thickness="4px"
+                                        speed="0.65s"
+                                        emptyColor="gray.200"
+                                        color="blue.500"
+                                        size="xl"
+                                        display="flex"
+                                        alignSelf="center"
+                                    />
+                                ) : (
+                                    <>
+                                        {pedidos.length === 0 ? (
+                                            <p>
+                                                Você ainda não possui pedidos!
+                                                :(
+                                            </p>
+                                        ) : (
+                                            <ListaPedidos>
+                                                {pedidos?.map(
+                                                    (pedido, index) => (
+                                                        <Item key={index}>
+                                                            <ItemImg
+                                                                src={
+                                                                    pedido.imagem_referencia
+                                                                }
+                                                            />
+                                                            <ItemDescription>
+                                                                <h2>
+                                                                    {
+                                                                        pedido.categoria
+                                                                    }
+                                                                </h2>
+                                                                <ItemData>
+                                                                    <h3>
+                                                                        Data:
+                                                                    </h3>
+                                                                    <h4>
+                                                                        {
+                                                                            pedido.data
+                                                                        }
+                                                                    </h4>
+                                                                </ItemData>
+                                                                <h5>
+                                                                    {pedido.preco.toLocaleString(
+                                                                        "pt-br",
+                                                                        {
+                                                                            style: "currency",
+                                                                            currency:
+                                                                                "BRL"
+                                                                        }
+                                                                    )}
+                                                                </h5>
+                                                                <Badge
+                                                                    height="25px"
+                                                                    borderRadius="lg"
+                                                                    px="2"
+                                                                    colorScheme="teal"
+                                                                    fontFamily="Nunito"
+                                                                    lineHeight="25px"
+                                                                    marginBottom=".5rem"
+                                                                >
+                                                                    {
+                                                                        pedido.stats
+                                                                    }
+                                                                </Badge>
+                                                            </ItemDescription>
+                                                        </Item>
+                                                    )
+                                                )}
+                                            </ListaPedidos>
+                                        )}
+                                    </>
+                                )}
+                            </ContainerPedidos>
+                        </ContainerMain>
+                    </motion.div>
+                </UsuarioBG>
+            )}
+        </>
     )
 }
 

@@ -16,8 +16,8 @@ export const StyledAvaliacoes = styled.main`
         text-align: center;
         font-weight: 600;
 
-        color: #fafafa;
-        text-shadow: 3px 3px 3px #a6324f;
+        color: var(--BackgroundColor-Main);
+        text-shadow: 3px 3px 3px var(--Color-Primary-Dark);
     }
 
     @media (min-width: 768px) {

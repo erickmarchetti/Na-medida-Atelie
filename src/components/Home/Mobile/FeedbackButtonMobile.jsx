@@ -4,19 +4,19 @@ export function FeedbackButtonMobile(props) {
     return (
         <Button
             border="2px"
-            borderColor="#DA4167"
+            borderColor="var(--Color-Primary-Main)"
             padding="20px 0px"
             fontSize="18px"
             fontWeight="700"
             _active={false}
-            bgColor="#DA4167"
-            color="#FAFAFA"
+            bgColor="var(--Color-Primary-Main)"
+            color="var(--White)"
             onClick={() => props.push("/avaliacoes")}
             w="100%"
             boxShadow="dark-lg"
             _hover={{
-                bgColor: "#A6324F",
-                borderColor: "#A6324F"
+                bgColor: "var(--Color-Primary-Dark)",
+                borderColor: "var(--Color-Primary-Dark)"
             }}
         >
             Veja o que nossos clientes dizem

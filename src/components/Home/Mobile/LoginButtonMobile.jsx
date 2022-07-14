@@ -4,8 +4,8 @@ export function LoginButtonMobile(props) {
     return (
         <Button
             variant="outline"
-            borderColor="#181818"
-            color="#181818"
+            borderColor="var(--Black)"
+            color="var(--Black)"
             padding="20px 35px"
             fontSize="20px"
             w="40vw"

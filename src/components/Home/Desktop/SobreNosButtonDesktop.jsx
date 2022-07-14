@@ -5,17 +5,29 @@ export function SobreNosButtonDesktop(props) {
     return (
         <Button
             variant="outline"
-            borderColor={props.sobreNos ? "#181818" : "#DA4167"}
-            bgColor={props.sobreNos ? "#FAFAFA" : "#DA4167"}
-            color={props.sobreNos ? "#181818" : "#FAFAFA"}
+            borderColor={
+                props.sobreNos
+                    ? "var(--BackgroundColor-Black)"
+                    : "var(--Color-Primary-Main)"
+            }
+            bgColor={
+                props.sobreNos
+                    ? "var(--BackgroundColor-Main)"
+                    : "var(--Color-Primary-Main)"
+            }
+            color={
+                props.sobreNos
+                    ? "var(--BackgroundColor-Black)"
+                    : "var(--BackgroundColor-Main)"
+            }
             _hover={
                 props.sobreNos
                     ? {
                           textDecoration: "underline"
                       }
                     : {
-                          bgColor: "#A6324F",
-                          borderColor: "#A6324F"
+                          bgColor: "var(--Color-Primary-Dark)",
+                          borderColor: "var(--Color-Primary-Dark)"
                       }
             }
             borderWidth={2}
@@ -30,7 +42,11 @@ export function SobreNosButtonDesktop(props) {
 
             <AiFillHeart
                 fontSize="18px"
-                color={props.sobreNos ? "#DA4167" : "#FAFAFA"}
+                color={
+                    props.sobreNos
+                        ? "var(--Color-Primary-Main)"
+                        : "var(--BackgroundColor-Main)"
+                }
             />
         </Button>
     )

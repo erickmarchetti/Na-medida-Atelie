@@ -4,9 +4,9 @@ export function CadastroButtonDesktop(props) {
     return (
         <Button
             variant="outline"
-            borderColor="#DA4167"
-            bgColor="#DA4167"
-            color="#FAFAFA"
+            borderColor="var(--Color-Primary-Main)"
+            bgColor="var(--Color-Primary-Main)"
+            color="var(--White)"
             p="5px 30px"
             onClick={() => props.push("/register")}
             boxShadow="dark-lg"
@@ -14,8 +14,8 @@ export function CadastroButtonDesktop(props) {
             _active={false}
             fontSize="22px"
             _hover={{
-                bgColor: "#A6324F",
-                borderColor: "#A6324F"
+                bgColor: "var(--Color-Primary-Dark)",
+                borderColor: "var(--Color-Primary-Dark)"
             }}
         >
             Cadastro

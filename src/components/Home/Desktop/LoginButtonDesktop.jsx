@@ -4,8 +4,8 @@ export function LoginButtonDesktop(props) {
     return (
         <Button
             variant="outline"
-            borderColor="#181818"
-            color="#181818"
+            borderColor="var(--BackgroundColor-Black)"
+            color="var(--BackgroundColor-Black)"
             borderWidth={2}
             p="5px 25px"
             boxShadow="dark-lg"

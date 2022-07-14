@@ -11,8 +11,8 @@ export const StyledCard = styled.li`
     max-height: 280px;
 
     background-color: var(--Grey-1);
-    color: #000000;
-    border: 1.5px solid #000000;
+    color: var(--Black);
+    border: 1.5px solid var(--Black);
 
     position: relative;
 
@@ -29,22 +29,21 @@ export const StyledCard = styled.li`
 
     p {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
         flex: 1;
         width: auto;
         overflow-y: auto;
     }
 
     @media (min-width: 768px) {
-        min-width: 377px;
+        min-width: 300px;
         max-width: 377px;
-
     }
 `
 
 export const RoundBorder = styled.div`
     border-radius: 100%;
-    border: 2px solid #000000;
+    border: 2px solid var(--Black);
     position: absolute;
 
     transform: translatey(-50%);
@@ -56,7 +55,7 @@ export const RoundBorder = styled.div`
     top: 0%;
     display: flex;
     justify-content: center;
-    background-color: #000000;
+    background-color: var(--Black);
     z-index: 1000;
 
     @media (min-width: 768px) {

@@ -35,7 +35,7 @@ export const PedidosContainer = styled.div`
 `
 
 export const PedidosCard = styled.div`
-    border: 2px solid #181818;
+    border: 2px solid var(--Black);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -81,6 +81,7 @@ export const FormSection = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
+    margin: 10px 0;
 
     @media (min-width: 768px) {
         justify-content: space-between;

@@ -4,12 +4,12 @@ export function CadastroButtonMobile(props) {
     return (
         <Button
             variant="outline"
-            borderColor="#DA4167"
-            bgColor="#DA4167"
-            color="#FAFAFA"
+            borderColor="var(--Color-Primary-Main)"
+            bgColor="var(--Color-Primary-Main)"
+            color="var(--White)"
             _hover={{
-                bgColor: "#A6324F",
-                borderColor: "#A6324F"
+                bgColor: "var(--Color-Primary-Dark)",
+                borderColor: "var(--Color-Primary-Dark)"
             }}
             padding="20px 35px"
             fontSize="20px"

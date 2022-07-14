@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import homeBackground from "../../assets/Images/layer.png"
 
 export const HomeBG = styled.div`
-    background-color: #fafafa;
+    background-color: var(--BackgroundColor-Main);
     position: absolute;
     z-index: -2;
     width: 100vw;
@@ -53,6 +53,16 @@ export const HomeContainer = styled.div`
         width: 60%;
     }
 `
+const InitialAnimation = keyframes`
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+
+`
+
 export const ContainerText = styled.div`
     display: flex;
     flex-direction: column;
@@ -63,14 +73,14 @@ export const ContainerText = styled.div`
     h1 {
         font-size: 2.2em;
         font-weight: 700;
-        color: #da4167;
+        color: var(--Color-Primary-Main);
         font-family: "Roboto", sans-serif;
         text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     }
     h2 {
         font-weight: 700;
         font-size: 2rem;
-        color: #6b6b6b;
+        color: var(--Grey-4);
         font-family: "Dancing Script", cursive;
         text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     }
@@ -80,6 +90,7 @@ export const ContainerText = styled.div`
         padding: 1.5rem 0;
         justify-content: space-between;
         max-height: 50rem;
+        animation: ${InitialAnimation} 0.5s;
         h1 {
             font-size: 4vw;
         }
@@ -92,7 +103,6 @@ export const ContainerText = styled.div`
         font-size: 5.5rem;
     }
 `
-export const ContainerText1280 = styled.div``
 
 export const ImgContainer = styled.div`
     display: flex;
