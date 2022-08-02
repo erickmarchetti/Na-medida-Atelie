@@ -5,13 +5,13 @@ Projeto final desenvolvido como Capstone do M3 no curso de Desenvolvimento Full 
 * A criação de um JSON server, com o intuito de manter persistência de dados
 * Alteração e atualização de recursos
 
-💭 [Motivação](#motivação)
+### 💭 [Motivação](#motivação)
 
-💻 [Tecnologias](#tecnologias)
+### 💻 [Tecnologias](#tecnologias)
  
-📸 [Screenshots](#screenshots)
+### 📸 [Screenshots](#screenshots)
 
-🏁 [Clique aqui para testar!](https://projeto-na-medida.vercel.app/)
+### 🏁 [Clique aqui para testar!](https://projeto-na-medida.vercel.app/)
 
 ![image](https://user-images.githubusercontent.com/98785969/182267394-348aef5a-f717-4165-87df-7b32e0f5f221.png)
 
