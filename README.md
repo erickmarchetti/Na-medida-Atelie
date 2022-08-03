@@ -1,6 +1,9 @@
 # Na Medida Ateliê
 
-Projeto final desenvolvido como Capstone do M3 no curso de Desenvolvimento Full Stack da Kenzie Academy Brasil. O objetivo desse projeto é sintetizar, em um único projeto:
+Projeto final desenvolvido como Capstone do M3 no curso de Desenvolvimento Full Stack da Kenzie Academy Brasil. 
+Desenvolvido por: Andryws Gortz, Erick Marchetti, Fidel Marques, Hitalo Santos, Izamara Agata e Raquel Carvalho.
+
+O objetivo desse projeto é sintetizar, em um único projeto:
 * Um sistema de cadastro, login e autenticação
 * A criação de um JSON server, com o intuito de manter persistência de dados
 * Alteração e atualização de recursos
