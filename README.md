@@ -51,7 +51,24 @@ Nós somos uma equipe de devs front-end que indentificamos uma deficiência no m
 ### Modal de feedbacks:
 ![image](https://user-images.githubusercontent.com/98785969/182268472-ed644a5d-6ba2-42ac-baba-559320d6923f.png)
 
+#### Execute o comando para instalações de dependências da API:
 
+```
+yarn
+
+ou
+
+npm install
+```
+#### Logo após, basta executar o comando para rodar a aplicação
+
+```
+yarn start
+
+ou
+
+npm start
+```
 
 
 
