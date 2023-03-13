@@ -8,7 +8,7 @@ O objetivo desse projeto é sintetizar, em um único projeto:
 * A criação de um JSON server, com o intuito de manter persistência de dados
 * Alteração e atualização de recursos
 
-### IMPORTÂNTE
+### IMPORTANTE
 
 Este projeto usa uma fake api para simular um back end, porém a plataforma que era utilizada gratuitamente não está mais disponível, estamos trabalhando para fazer a manutenção.
 
